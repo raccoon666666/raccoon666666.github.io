@@ -39,13 +39,13 @@
         
             <p class="question">03.yml&nbsp;Q:&nbsp;为什么volatile保证了哪些线程安全原则?没有保证哪些?为什么<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;可见性:&nbsp;#实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程内存变量更新后立即store,同时lock主内存变量(防止其他内存脏读),同时使其他线程内存变量失效<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有其他线程read,然而在等待锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;write成功,同时unlock<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有其他线程成功read,然后load回线程内存<br>&nbsp;&nbsp;有序性:&nbsp;#实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器会对单线程中的汇编指令重排序<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;volatile变量的赋值前后有内存屏障,阻止指令重排<br>&nbsp;&nbsp;原子性:&nbsp;#未实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;底层的分为8大原子操作,可被时序重拍<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一个线程store回主内存之前,其他线程已读取线程内存中的数据<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;可见性:&nbsp;#实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程内存变量更新后立即store,同时lock主内存变量(防止其他内存脏读),同时使其他线程内存变量失效<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有其他线程read,然而在等待锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;write成功,同时unlock<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有其他线程成功read,然后load回线程内存<br>&nbsp;&nbsp;有序性:&nbsp;#实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器会对单线程中的汇编指令重排序<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;volatile变量的赋值前后有内存屏障,阻止其后指令置于其前,组织其前指令置于其后<br>&nbsp;&nbsp;原子性:&nbsp;#未实现<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;底层的分为8大原子操作,可被时序重拍<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一个线程store回主内存之前,其他线程已读取线程内存中的数据<br></p>
         
             <p class="question">04.yml&nbsp;Q:&nbsp;Java的线程运行在哪个态?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;操作系统的线程分为用户态ULT和内核态KLT<br>&nbsp;&nbsp;-&nbsp;ULT纯粹由某个线程模拟出来<br>&nbsp;&nbsp;-&nbsp;KLT由操作系统提供,是真实的线程<br>&nbsp;&nbsp;-&nbsp;通过观察操作系统中线程总数的变化可知,Java的线程是KLT</p>
         
-            <p class="question">05.yml&nbsp;Q:&nbsp;Java并发中的synchronized关键字有哪些用法?原理是什么?<br></p>
+            <p class="question">05.yml&nbsp;Q:&nbsp;synchronized有哪些用法?原理是什么?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;用法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰static方法,使用Person.class对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰成员方法,使用this对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰局部块,使用自定义对象作为锁<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Object-Monitor(等待队列)-Mutux<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;synchronized包裹的代码修饰成:monitorenter-xxx-monitorexit<br>&nbsp;&nbsp;锁类型:<br>&nbsp;&nbsp;&nbsp;&nbsp;可重入锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免synchronized方法的递归带来的死锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;为避免异常而不能释放锁monitorexit&nbsp;>&nbsp;monitorenter<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;加锁>释放则死锁,加锁<释放则异常<br>&nbsp;&nbsp;&nbsp;&nbsp;互斥锁:&nbsp;读写都获取锁<br>&nbsp;&nbsp;&nbsp;&nbsp;非公平锁:&nbsp;先尝试获得锁,再进入等待队列<br>&nbsp;&nbsp;锁升级:&nbsp;&nbsp;&nbsp;#一旦升级不可逆<br>&nbsp;&nbsp;&nbsp;&nbsp;无锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不抢锁时,只使用CAS完成数据修改<br>&nbsp;&nbsp;&nbsp;&nbsp;偏向锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第一次抢锁时,在Object标记该进程,并且不释放锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第二次抢锁时,判断如果已被标记,直接获取已有的锁,无需抢锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用wait()时升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;轻量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;如果偏向锁在被其他线程获取锁时有竞争,则升级为轻量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS修改Object的锁标志位为自己,代替耗时的抢锁<br>&nbsp;&nbsp;&nbsp;&nbsp;重量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当自旋超过上下文切换的时间(自旋次数>10)后,升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;enter/exit需要JVM进入/退出内核态获取Mutex,效率低<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;没拿到锁的线程被阻塞,涉及到上下文切换和线程调度,效率低<br></p>
         
@@ -63,7 +63,7 @@
         
             <p class="question">09.yml&nbsp;Q:&nbsp;AQS是什么?如何实现的?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;队列:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;包含了管理调度线程执行的同步队列(双向链表)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;包含了管理条件消息的条件队列(单向链表)<br>&nbsp;&nbsp;唤醒:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;非传递唤醒则为独占模式,实现互斥锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;传递唤醒则为共享模式,实现共享锁<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;作用:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;为实现锁或其他同步组件提供通用方法<br>&nbsp;&nbsp;实现的功能:<br>&nbsp;&nbsp;&nbsp;&nbsp;同步状态控制量:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于Lock,表示线程重入次数<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于Semaphore,表示剩余资源数<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于FutureTask,表示任务的状态(未开始、运行中、完成、取消)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于CountDownLatch,表示<br>&nbsp;&nbsp;&nbsp;&nbsp;等待队列:&nbsp;管理线程调度的队列(双向链表)<br>&nbsp;&nbsp;&nbsp;&nbsp;条件队列:&nbsp;管理条件消息的队列(单向链表)<br>&nbsp;&nbsp;&nbsp;&nbsp;线程唤醒:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;非传递唤醒则为独占模式,实现互斥锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;传递唤醒则为共享模式,实现共享锁<br></p>
         
             <p class="question">10.yml&nbsp;Q:&nbsp;BlockingQueue是如何设计的?有哪些方法?<br></p>
         
@@ -75,7 +75,15 @@
         
             <p class="question">12.yml&nbsp;Q:&nbsp;ThreadLocal<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread-ThreadLocalMap<ThreadLocal的自研hashcode,E><br>&nbsp;&nbsp;作用:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;跨层传递数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程间数据隔离<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;事务操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库连接管理,Session会话管理</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;功能:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;针对某个固定的ThreadLocal对象(public&nbsp;static&nbsp;ThreadLocal&nbsp;session)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;相同的调用代码,根据当前线程的不同,从该ThreadLocal中拿出的值也不同<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal本身不存VALUE,只是一个标记<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread对象&nbsp;==&nbsp;1个ThreadLocalMap<ThreadLocal,E><br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal的值保存在Thread中,针对每个ThreadLocal保存一个值<br>&nbsp;&nbsp;Hash冲突:&nbsp;TheadLocal定义静态原子base,每次实例化计算base+Delta作为其HASH值<br>&nbsp;&nbsp;若引用:&nbsp;ThreadLocalMap数组中保存的Entry是弱引用,因为要避免ThreadLocal对象无法回收<br>&nbsp;&nbsp;应用场景:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;跨层传递数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程间数据隔离<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;事务操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库Connection管理<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Session会话管理</p>
+        
+            <p class="question">13.yml&nbsp;Q:&nbsp;说说你对读写锁的理解?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;与互斥锁的只要有线程读写就加锁不同,线程可同时读<br>&nbsp;&nbsp;-&nbsp;当读>>写时由于读读不阻塞,效率比互斥锁高<br>&nbsp;&nbsp;-&nbsp;当并发不是很高时,由于需要维护读锁状态,效率比互斥锁低<br>&nbsp;&nbsp;-&nbsp;降级:写线程可通过获取读锁,在自己释放写锁后,与其他读线程共享读</p>
+        
+            <p class="question">14.yml&nbsp;Q:&nbsp;JUC包括哪些功能?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;线程池:&nbsp;Executor、ThreadPoolExecutor<br>&nbsp;&nbsp;原子更新:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS在多线程下实现原子操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;原子基本类型、原子数组、原子引用、原子字段<br>&nbsp;&nbsp;锁和条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于阻塞的锁和用于唤醒的条件<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock、Condition<br>&nbsp;&nbsp;阻塞队列:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于生产者-消费者模型<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BlockingQueue<br>&nbsp;&nbsp;并发容器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;实现了线程安全的集合类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Concurrent、CopyOnWrite<br>&nbsp;&nbsp;同步器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;协助同步<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Semaphore、FutureTask</p>
         
     </body>
     </html>
