@@ -17,11 +17,13 @@
     }</style>
         <style>
         .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
         border: 1px orange solid;
         border-radius: 5px;
         padding: 20px;
-        
-        font-size: 24px;
+        font-size: 20px;
         color: black;
     }</style>
     </head>
@@ -45,7 +47,7 @@
         
             <p class="question">05.yml&nbsp;Q:&nbsp;Java并发中的synchronized关键字有哪些用法?原理是什么?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;用法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰static方法,使用Person.class对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰成员方法,使用this对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰局部块,使用自定义对象作为锁<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Object-Monitor(等待队列)-Mutux<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;synchronized包裹的代码修饰成:monitorenter-xxx-monitorexit<br>&nbsp;&nbsp;&nbsp;&nbsp;可重入锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免synchronized方法的递归带来的死锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;为避免异常而不能释放锁monitorexit&nbsp;>&nbsp;monitorenter<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;加锁>释放则死锁,加锁<释放则异常<br>&nbsp;&nbsp;&nbsp;&nbsp;互斥锁:&nbsp;读写都获取锁<br>&nbsp;&nbsp;&nbsp;&nbsp;非公平锁:&nbsp;先尝试获得锁,再进入等待队列<br>&nbsp;&nbsp;&nbsp;&nbsp;锁升级:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;无锁->偏向锁->轻量级锁->重量级锁(一旦升级不可逆)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;偏向锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;只有一个线程访问资源时在Object标记该进程,下次直接获得锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;轻度竞争时升级为轻量级锁,调用wait()时升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;轻量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS操作数据<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当自旋超过上下文切换的时间后,升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;enter/exit需要JVM进入/退出内核态获取Mutex,效率低<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;没拿到锁的线程被阻塞,涉及到上下文切换和线程调度,效率低<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;用法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰static方法,使用Person.class对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰成员方法,使用this对象作为锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;修饰局部块,使用自定义对象作为锁<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Object-Monitor(等待队列)-Mutux<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;synchronized包裹的代码修饰成:monitorenter-xxx-monitorexit<br>&nbsp;&nbsp;锁类型:<br>&nbsp;&nbsp;&nbsp;&nbsp;可重入锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免synchronized方法的递归带来的死锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;为避免异常而不能释放锁monitorexit&nbsp;>&nbsp;monitorenter<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;加锁>释放则死锁,加锁<释放则异常<br>&nbsp;&nbsp;&nbsp;&nbsp;互斥锁:&nbsp;读写都获取锁<br>&nbsp;&nbsp;&nbsp;&nbsp;非公平锁:&nbsp;先尝试获得锁,再进入等待队列<br>&nbsp;&nbsp;锁升级:&nbsp;&nbsp;&nbsp;#一旦升级不可逆<br>&nbsp;&nbsp;&nbsp;&nbsp;无锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不抢锁时,只使用CAS完成数据修改<br>&nbsp;&nbsp;&nbsp;&nbsp;偏向锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第一次抢锁时,在Object标记该进程,并且不释放锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第二次抢锁时,判断如果已被标记,直接获取已有的锁,无需抢锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用wait()时升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;轻量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;如果偏向锁在被其他线程获取锁时有竞争,则升级为轻量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS修改Object的锁标志位为自己,代替耗时的抢锁<br>&nbsp;&nbsp;&nbsp;&nbsp;重量级锁:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当自旋超过上下文切换的时间(自旋次数>10)后,升级为重量级锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;enter/exit需要JVM进入/退出内核态获取Mutex,效率低<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;没拿到锁的线程被阻塞,涉及到上下文切换和线程调度,效率低<br></p>
         
             <p class="question">06.yml&nbsp;Q:&nbsp;Java的CAS?<br></p>
         
@@ -57,7 +59,7 @@
         
             <p class="question">08.yml&nbsp;Q:&nbsp;多线程安全是什么?线程同步有哪些手段?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;线程安全:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用方无需显式同步,即可使任意时序的多线程都正确执行<br>&nbsp;&nbsp;三原则:<br>&nbsp;&nbsp;&nbsp;&nbsp;可见性:&nbsp;线程对共享变量的修改对于所有线程都可见<br>&nbsp;&nbsp;&nbsp;&nbsp;有序性:&nbsp;线程的代码不可被指令重拍<br>&nbsp;&nbsp;&nbsp;&nbsp;原子性:&nbsp;线程的代码对共享变量的操作是原子的<br>&nbsp;&nbsp;同步手段:&nbsp;&nbsp;&nbsp;#本质是控制线程的状态切换<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread(join,sleep)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Object(wait,notify,notifyAll)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Condition(await,signal,signalAll)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LockSupport(park,unpark)&nbsp;+&nbsp;BlokingQueue<br>&nbsp;&nbsp;安全手段:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;volatile<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;synchronized<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BlockingQueue<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;AtomicInteger<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LongAdder<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不可变类型</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;线程安全:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用方无需显式同步,即可使任意时序的多线程都正确执行<br>&nbsp;&nbsp;三原则:<br>&nbsp;&nbsp;&nbsp;&nbsp;可见性:&nbsp;线程对共享变量的修改对于所有线程都可见<br>&nbsp;&nbsp;&nbsp;&nbsp;有序性:&nbsp;线程的代码不可被指令重拍<br>&nbsp;&nbsp;&nbsp;&nbsp;原子性:&nbsp;线程的代码对共享变量的操作是原子的<br>&nbsp;&nbsp;同步手段:&nbsp;&nbsp;&nbsp;#本质是控制线程的状态切换<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread(join,sleep)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Object(wait,notify,notifyAll)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Condition(await,signal,signalAll)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LockSupport(park,unpark)&nbsp;+&nbsp;BlokingQueue<br>&nbsp;&nbsp;安全手段:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;volatile<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock&nbsp;,&nbsp;synchronized<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BlockingQueue<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;AtomicInteger&nbsp;,&nbsp;LongAdder<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不可变类型</p>
         
             <p class="question">09.yml&nbsp;Q:&nbsp;AQS是什么?如何实现的?<br></p>
         
