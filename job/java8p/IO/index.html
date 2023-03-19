@@ -1,0 +1,39 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        
+        font-size: 24px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;Java中的IO流结构是怎样的?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;分类:&nbsp;输入流输出流,节点流处理流,字节流字符流<br>&nbsp;&nbsp;节点流:&nbsp;从byte[]char[]&nbsp;&&nbsp;从文件&nbsp;&&nbsp;从管道&nbsp;&&nbsp;从多流串联<br>&nbsp;&nbsp;处理流:&nbsp;缓冲&nbsp;&&nbsp;序列化对象&nbsp;&&nbsp;读写基本数据&nbsp;&&nbsp;可放回&nbsp;&&nbsp;可输出到控制台<br>&nbsp;&nbsp;转换流:&nbsp;PrintWriter&nbsp;&&nbsp;InputStreamReader<br></p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;Java如何序列化?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;内置序列化:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类继承Serializable接口<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类定义常量serialVersionUID表示当前的版本,避免反序列化冲突<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用ObjectInputStream对流包装以支持传输Object<br>&nbsp;&nbsp;其他序列化:&nbsp;[JSON,Protobuf,Thrift,Avro]</p>
+        
+    </body>
+    </html>

@@ -1,0 +1,103 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        
+        font-size: 24px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;面向对象三大特性<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对具体问题概括,抽象出公用性质,忽略无关性质<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据抽象(属性/状态)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;行为抽象(行为/功能)<br>&nbsp;&nbsp;封装:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将数据抽象和行为抽象形成一个有机的整体<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对外部世界隐藏内部的实现细节(某些状态值,某些行为的实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;该藏的藏该露的露:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;规范对数据的访问(为数据结构指定访问规范)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;内置数据检查操作数据更安全<br>&nbsp;&nbsp;继承:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;在现有类的基础上构建新的类,形成父类子类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类重用父类的方数据/行为抽象,并可进行扩展<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于代码的重用,简化了子类的设计<br>&nbsp;&nbsp;多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;广义多态:&nbsp;强制多态,重载多态,泛型多态,包含多态<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;包含多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类对父类方法重写,通过上溯将子类赋值给父类<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切调用用父对象的形式,在运行时,对同一消息作出不同响应的能力<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;这三大特性实现了代码的高内聚、低耦合<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调了程序的可维护性和可扩展性</p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;为什么Java代码可以实现一次编写、到处运行？<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;编译流程:&nbsp;.java源代码&nbsp;=>&nbsp;.class字节码&nbsp;=>&nbsp;被JVM翻译成机器码执行<br>&nbsp;&nbsp;JVM:&nbsp;不同的平台对于JVM有不同的实现,而.class字节码是相同的</p>
+        
+            <p class="question">03.yml&nbsp;Q:&nbsp;说一说你对Java访问权限的了解<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员的访问范围:&nbsp;类内部&nbsp;<&nbsp;同包类&nbsp;<&nbsp;子类&nbsp;<&nbsp;任何类<br>&nbsp;&nbsp;public:<br>&nbsp;&nbsp;&nbsp;&nbsp;class:&nbsp;任何类<br>&nbsp;&nbsp;&nbsp;&nbsp;member:&nbsp;任何类<br>&nbsp;&nbsp;protected:&nbsp;子类<br>&nbsp;&nbsp;default:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;class:&nbsp;同包类<br>&nbsp;&nbsp;&nbsp;&nbsp;member:&nbsp;同包类<br>&nbsp;&nbsp;private:&nbsp;类内部</p>
+        
+            <p class="question">04.yml&nbsp;Q:&nbsp;Java的数据类型<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;包括3大类8小类<br>&nbsp;&nbsp;-&nbsp;Number:&nbsp;[byte(1),short(2),int(4),long(8),float(4),double(8)]<br>&nbsp;&nbsp;-&nbsp;char(2)<br>&nbsp;&nbsp;-&nbsp;boolean(?)</p>
+        
+            <p class="question">05.yml&nbsp;Q:&nbsp;全局变量与局部变量的区别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员变量:&nbsp;类的属性<br>&nbsp;&nbsp;全局变量:&nbsp;static变量<br>&nbsp;&nbsp;局部变量:&nbsp;方法内变量<br>&nbsp;&nbsp;位置:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;成员变量位于堆,初始为全0<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;全局变量位于堆的方法区<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;局部变量位于栈,没有初始值<br>&nbsp;&nbsp;生命周期:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;成员变量随对象的实例化而创建,随对象回收也回收<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;全局变量随类的加载而创建<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;局部变量随函数调用结束,栈帧被销毁而回收<br>&nbsp;&nbsp;识别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据绝对地址访问全局变量<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据栈的相对地址访问局部变量</p>
+        
+            <p class="question">06.yml&nbsp;Q:&nbsp;包装类的意义是什么<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;泛型,使变量能放入集合<br>&nbsp;&nbsp;-&nbsp;上溯为Object,适用于接收Object的方法<br>&nbsp;&nbsp;-&nbsp;储存在堆中,可在运行时动态创建</p>
+        
+            <p class="question">07.yml&nbsp;Q:&nbsp;什么是面向对象,与面向过程的差别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;面向对象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将系统的需求抽象成各种<对象>之间的交互<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将这些对象的本质特点抽象为类,作为系统的基本单位<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使得系统能直接映射到物理世界<br>&nbsp;&nbsp;面向过程:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将系统的需求抽象成各种<流程>之间的调用,对数据得加工<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将这些流程自顶向下/逐步求精地划分为函数,作为系统的基本单位<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不符合人的思维习惯,可扩展性不如面向对象</p>
+        
+            <p class="question">08.yml&nbsp;Q:&nbsp;为什么java要做成单继承,为什么接口可以多继承<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;类的(父类)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写时会产生二义性<br>&nbsp;&nbsp;类的(父类,接口)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写不会出错<br>&nbsp;&nbsp;类的(接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须重写<br>&nbsp;&nbsp;接口的(父接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;同名方法全抽象时无需重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;存在default必须重写<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切重名都可通过重写解决<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写时使用I.super.fun来综合调用重名的方法</p>
+        
+            <p class="question">09.yml&nbsp;Q:&nbsp;重写和重载的区别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;重载:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;发生在同一个类中<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(方法名相同,参数的个数或类型不同)构成重载<br>&nbsp;&nbsp;重载的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回值类型的不同不能构成重载,会重定义错误<br>&nbsp;&nbsp;重写:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;发生在子类中<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(方法名相同,参数的个数和类型相同)构成重写<br>&nbsp;&nbsp;重写的桥方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器的方法签名是(方法名,参数列表),JVM的方法签名是(返回类型,方法名,参数列表)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;比如public&nbsp;Number&nbsp;show(){}的重写public&nbsp;Integer&nbsp;show(){}在JVM看来不是重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以要自动生成public&nbsp;Number&nbsp;show(){return&nbsp;show();}重载型<br>&nbsp;&nbsp;重写的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;访问权限要更大,否则不能正常访问<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回类型更小,否则不能赋值给Number<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抛出异常要更少更小,否则不能捕获<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于多继承,对于每个同名方法都要满足上述条件<br></p>
+        
+            <p class="question">10.yml&nbsp;Q:&nbsp;为什么不能重写构造方法<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;构造方法没有返回值名字与类名相同,所以子类无法重写只会视为一个普通方法<br>&nbsp;&nbsp;-&nbsp;构造方法无法被继承,所以没有重写一说<br>&nbsp;&nbsp;-&nbsp;重写时为了多态,通过调用已存在对象的方法来实现多态,构造方法产生对象,所以重写它没有意义<br></p>
+        
+            <p class="question">11.yml&nbsp;Q:&nbsp;介绍一些Object中的方法<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;equals:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回判断一个对象是否与自己相等<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;要求:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;正确判断异类和null<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须满足自反、对称、传递、一致性<br>&nbsp;&nbsp;hashCode:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回this的哈希值<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;要求:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;相等obj的哈希相等<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不等的obj的哈希必须不等<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;尽量减小哈希碰撞<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须重写,哈希默认是obj的地址值,否则只有obj==obj时哈希才相等<br>&nbsp;&nbsp;toString:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回对象的字符串值<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;在sout和+时自动调用<br>&nbsp;&nbsp;clone:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回一个深拷贝对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;默认为protected,因为必须重写才能使用<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;否则由于任何类都继承Object而使用默认clone()返回了预期之外的对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类将其重写为public,并实现Cloneable接口,表示自己实现了clone()<br>&nbsp;&nbsp;wait.notify.notifyAll:&nbsp;多线程相关<br>&nbsp;&nbsp;finalize:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;被GC前执行的动作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;由于通过该方法this可能重新被引用而不被GC,下次被GC时又被引用而死循环,所以finalize只被调用一次</p>
+        
+            <p class="question">12.yml&nbsp;Q:&nbsp;为什么String是不可变的?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;原因:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;String内部是private&nbsp;final&nbsp;byte[],没有提供修改其值的方法(反射可以)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;String是fianl类,所以杜绝了继承为可变类的可能性<br>&nbsp;&nbsp;常量池:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;字符串被大量使用,有必要复用相同的字符串<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;如果字符串对象可变,那么指向该对象的引用都会受到影响<br>&nbsp;&nbsp;常量哈希:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;map的key一般使用不可变类型、而String是广泛使用的key<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;字符串内部不可变,所以实例化后可立即计算出hash然后缓存<br>&nbsp;&nbsp;数据安全:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;字符串中保存了敏感信息<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;如果可变,则在运行时会被修改字符<br>&nbsp;&nbsp;线程安全:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;多个线程共享堆对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;如果可变,则一个线程对字符的修改会影响其他线程</p>
+        
+            <p class="question">13.yml&nbsp;Q:&nbsp;说一说你对字符串拼接的理解<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;三种拼接方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;加号操作符:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于"a"+"b":&nbsp;直接被编译器优化,效率高<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于"a"+var:&nbsp;自动实例化StringBuilder拼接,循环时效率低<br>&nbsp;&nbsp;&nbsp;&nbsp;变长字符串:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;类似于vector一类容器,频繁扩容使效率降低<br>&nbsp;&nbsp;&nbsp;&nbsp;concat:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;新建一个bytes[],然后复制两字符串,然后实例化String<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;拼接两字符串效率高,拼接大量字符串效率低<br>&nbsp;&nbsp;拼接方法的选择:<br>&nbsp;&nbsp;&nbsp;&nbsp;全是字面量:&nbsp;加号操作符<br>&nbsp;&nbsp;&nbsp;&nbsp;大量拼接:&nbsp;变长字符串<br>&nbsp;&nbsp;&nbsp;&nbsp;两个拼接:&nbsp;concat<br><br><br></p>
+        
+            <p class="question">14.yml&nbsp;Q:&nbsp;接口和抽象类有什么异同？<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;属性:&nbsp;接口可以有属性,但必须初始化(否则无法初始化)<br>&nbsp;&nbsp;&nbsp;&nbsp;构造方法:&nbsp;接口没有构造方法,抽象类有但仅供子类用<br>&nbsp;&nbsp;修饰符:<br>&nbsp;&nbsp;&nbsp;&nbsp;private:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有private属性<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都可以有private方法,但必须马上实现(否则无法实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;protected:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有protected属性<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有protected方法<br>&nbsp;&nbsp;初始化块:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口中不允许初始化块和静态初始化块<br>&nbsp;&nbsp;功能:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口是规范,为多模块耦合提供标准,为多系统通信提供标准(上溯为接口类型)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类是模板,供不同的策略作出不同的实现(char)<br>&nbsp;&nbsp;相同点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都不能实例化,&nbsp;需要显式或隐式继承<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类都必须实现其定义的抽象方法</p>
+        
+            <p class="question">15.yml&nbsp;Q:&nbsp;OOP和IOP有哪些区别?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象级别:&nbsp;OOP强调封装继承多态,IOP强调抽象和多态<br>&nbsp;&nbsp;用途:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;OOP通过对象间协作完成系统任务<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;IOP通过多态实现多策略,在类基础上抽象出公用方法作为接口,调用方只关心这些接口里的方法<br>&nbsp;&nbsp;耦合:&nbsp;IOP耦合度比OOP低<br>&nbsp;&nbsp;测试:&nbsp;IOP可测试性比OOP高</p>
+        
+            <p class="question">16.yml&nbsp;Q:&nbsp;说说你对static关键字的理解<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;本质:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使成员不再依赖于实例对象,而抽象为对象的共性,即依赖于类<br>&nbsp;&nbsp;修饰成员:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于修饰类的成员(字段,方法,初始块,内部类)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;静态成员无法使用this,因为系统未为其传入<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;静态成员在类被加载时,一同被加载进堆的方法区,直接通过类名调用<br>&nbsp;&nbsp;修饰类:<br>&nbsp;&nbsp;&nbsp;&nbsp;静态内部类:&nbsp;内部类不再依赖于外部类的对象,可直接使用<br>&nbsp;&nbsp;&nbsp;&nbsp;内部类:&nbsp;无法声明static成员,因为与内部类依赖于外部类矛盾<br>&nbsp;&nbsp;&nbsp;&nbsp;外部类:&nbsp;外层是包,没有实例化的概念,所以外部类不依赖包,所以没必要用static修饰<br>&nbsp;&nbsp;&nbsp;&nbsp;局部类:&nbsp;外层是方法,也没有实例化的概念</p>
+        
+            <p class="question">17.yml&nbsp;Q:&nbsp;说说你对final关键字的理解<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;本质:&nbsp;使被修饰的目标"不可变"<br>&nbsp;&nbsp;修饰属性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;需在构造函数或初始块中初始化,final局部变量的首次赋值视为初始化<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;变量的值不可变&引用的指向不可变<br>&nbsp;&nbsp;修饰方法:&nbsp;方法不可被子类重写<br>&nbsp;&nbsp;修饰类:&nbsp;类不可被继承<br></p>
+        
+            <p class="question">18.yml&nbsp;Q:&nbsp;说说反射的应用场景?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;加载数据库驱动<br>&nbsp;&nbsp;-&nbsp;解析注解<br>&nbsp;&nbsp;-&nbsp;对象的反序列化<br>&nbsp;&nbsp;-&nbsp;AOP的实现方案<br></p>
+        
+    </body>
+    </html>

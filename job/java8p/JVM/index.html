@@ -1,0 +1,35 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        
+        font-size: 24px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;说一说Java的四种引用方式<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;强引用:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有通过new关键字建立的连接都是强引用<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象只要被栈变量或static变量引用了,就不会被GC<br>&nbsp;&nbsp;软引用:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象只被软引用时,在内存不足时就有可能被回收<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用LRU回收对象,对象每次被访问时刷新时间戳<br>&nbsp;&nbsp;弱引用:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象只被弱引用时,在GC周期时就被回收<br>&nbsp;&nbsp;虚引用:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不能单独使用(因为无法取出的对象永远为null)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主要用于监控某对象的回收状态(当对象被回收时引用队列会将这个虚引用入队)</p>
+        
+    </body>
+    </html>

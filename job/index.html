@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            font-size: 22px;
+            text-decoration: none;
+        }
+
+        #main {
+            text-align: center;
+            border: 1px cornflowerblue solid;
+            border-radius: 15px;
+            padding: 10px 100px;
+            width: auto;
+            position: absolute;
+            top: calc(50% - 100px);
+            left: calc(50% - 120px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <p><a href="/hrQA/index.html" target="_self">HR问题</a></p>
+        <p><a href="/java8p/" target="_self">八股文</a></p>
+        <p><a href="/job/" target="_self">岗位</a></p>
+    </div>
+
+    <script>
+        let main = document.getElementById("main")
+        for (const i of main.querySelectorAll("p>a")) {
+            i.setAttribute("href",location.href+i.getAttribute("href").substring(1))
+        }
+    </script>
+</body>
+
+</html>

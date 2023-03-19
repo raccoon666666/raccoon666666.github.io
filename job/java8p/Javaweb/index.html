@@ -1,0 +1,35 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        
+        font-size: 24px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;Session和Cookie和Token的区别是什么?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;Session:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;服务端维护sessionid-session作为用户的上下文<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;服务端用过Cookie或Param将JSEDDIONID发送给服务端<br>&nbsp;&nbsp;Cookie:&nbsp;客户端保存账户信息<br>&nbsp;&nbsp;Token:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;客户端保存(账户信息,时间信息)的加密串<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;每次请求都将token作为Header/Data传输<br>&nbsp;&nbsp;优点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;服务端无需存储,增强了容灾,有利于服务端设计负载均衡<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;客户端轻量存储,减轻存储压力,减轻网络负担,增强数据安全性<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;防止CSRF<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;可用于跨域认证(Session-Cookie无法跨站)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;可用于跨平台(有些客户端不支持Cookie)</p>
+        
+    </body>
+    </html>
