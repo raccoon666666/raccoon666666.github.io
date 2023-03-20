@@ -85,5 +85,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;线程池:&nbsp;Executor、ThreadPoolExecutor<br>&nbsp;&nbsp;原子更新:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS在多线程下实现原子操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;原子基本类型、原子数组、原子引用、原子字段<br>&nbsp;&nbsp;锁和条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于阻塞的锁和用于唤醒的条件<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock、Condition<br>&nbsp;&nbsp;阻塞队列:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于生产者-消费者模型<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BlockingQueue<br>&nbsp;&nbsp;并发容器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;实现了线程安全的集合类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Concurrent、CopyOnWrite<br>&nbsp;&nbsp;同步器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;协助同步<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Semaphore、FutureTask</p>
         
+            <p class="question">15.yml&nbsp;Q:&nbsp;说说你对线程池的理解?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;Java的线程是KLT,启动一个线程的成本高<br>&nbsp;&nbsp;-&nbsp;线程池在系统启动时创建一定数量线程,通过对线程复用,适合运行大量生存期短的线程<br>&nbsp;&nbsp;-&nbsp;只需将Runnable和Callable传入线程池,其自动分配线程去执行它<br></p>
+        
     </body>
     </html>
