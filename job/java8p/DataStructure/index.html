@@ -1,0 +1,41 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;说说各种排序算法?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;比较排序:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最好情况&nbsp;&nbsp;平均情况&nbsp;&nbsp;&nbsp;最坏情况&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空间&nbsp;&nbsp;稳定性&nbsp;&nbsp;比较次数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原理&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;选择&nbsp;&nbsp;简选&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;堆&nbsp;&nbsp;&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;N<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;树选<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;插入&nbsp;&nbsp;直插&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N-1,N(N-1)/2&nbsp;&nbsp;&nbsp;&nbsp;i待插元素,j待移序列<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二分插&nbsp;&nbsp;&nbsp;O(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N-1,???&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i待插元素,j待移序列<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希尔&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n^1.3)&nbsp;&nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选取初始距离(d=n/2),并指定距离减小策略(d/=2)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;交换&nbsp;&nbsp;冒泡&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O(1)&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N-1,N(N-1)/2&nbsp;&nbsp;&nbsp;&nbsp;i有序段头,j有序组每个元素,cache需交换的j<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快速&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;&nbsp;O(n^2)&nbsp;&nbsp;&nbsp;&nbsp;O(logn)&nbsp;&nbsp;N<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;归并&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;O(nlogn)&nbsp;&nbsp;&nbsp;&nbsp;O(n)&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;非比较排序:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;基数排序&nbsp;&nbsp;&nbsp;&nbsp;O(d(n+r))&nbsp;O(d(n+r))&nbsp;O(d(n+r))&nbsp;&nbsp;&nbsp;O(r)&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;桶排序<br>&nbsp;&nbsp;上限O(nlogn)的原因:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;n!构成的判定树最好情况下高度最小,不存在度1的节点,即h=O(n2+n0)=2n!-1,O(2n!-1)=O(nlogn)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;最好情况下每次比较都能筛选掉n!中的一半,2^h=n!,h=O(logn!)=O(nlogn)<br>&nbsp;&nbsp;</p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;说说树中的各种等式关系?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;<br></p>
+        
+    </body>
+    </html>
