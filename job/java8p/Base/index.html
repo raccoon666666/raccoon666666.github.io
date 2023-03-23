@@ -101,5 +101,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;加载数据库驱动<br>&nbsp;&nbsp;-&nbsp;解析注解<br>&nbsp;&nbsp;-&nbsp;对象的反序列化<br>&nbsp;&nbsp;-&nbsp;AOP的实现方案<br></p>
         
+            <p class="question">19.yml&nbsp;Q:&nbsp;说说一个类的构造过程?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;前提:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类中没有调用super的构造函数,系统会自动在第一行添加super()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;构造函数中super(..)与this(..)不能共存,因为this(..)第一行为super,会重复构造父类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;构造函数无法显式同时调用super(..)和this(..),因为都必须为第一行<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐式同时调用super(..)与this(..)不会重复构造父类,因为显式的this重定向后不会触发super<br>&nbsp;&nbsp;顺序:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;装载父类(按定义顺序调用static块、static属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;装载子类(按定义顺序调用static块、static属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据new&nbsp;XXX(..)的参数调用构造方法<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;进入首行的super(..)直到Object<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;初始化类属性(按定义顺序调用init块、成员属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;执行构造方法的方法体(不执行this定向后的方法内的super)</p>
+        
     </body>
     </html>

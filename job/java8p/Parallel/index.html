@@ -89,5 +89,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;Java的线程是KLT,启动一个线程的成本高<br>&nbsp;&nbsp;-&nbsp;线程池在系统启动时创建一定数量线程,通过对线程复用,适合运行大量生存期短的线程<br>&nbsp;&nbsp;-&nbsp;只需将Runnable和Callable传入线程池,其自动分配线程去执行它<br></p>
         
+            <p class="question">16.yml&nbsp;Q:&nbsp;说说CountDownLatch的原理与作用?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;new&nbsp;CountDownLatch(线程数),表示要等待的线程数量<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;等待方线程调用obj.await()等待其他线程完成<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;被等待方线程执行完毕后调用obj.countDown()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;减少到0时,await被唤醒<br>&nbsp;&nbsp;作用:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;类似于thread.join()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于任务的并行拆分</p>
+        
     </body>
     </html>
