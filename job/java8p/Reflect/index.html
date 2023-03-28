@@ -1,0 +1,41 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;Class的关系结构是怎么的?Class对象的获取方式有哪些?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;OOP-KLASS模型:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解释&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个数<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Klass&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法区&nbsp;&nbsp;&nbsp;&nbsp;类的元信息&nbsp;&nbsp;&nbsp;1个/CL<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;OopDesc&nbsp;&nbsp;&nbsp;&nbsp;堆区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实例对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不限<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;mirror&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;堆区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class对象&nbsp;&nbsp;&nbsp;&nbsp;1个/CL<br>&nbsp;&nbsp;指向关系:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Oop&nbsp;-&gt;&nbsp;Klass&nbsp;-&gt;&nbsp;Class<br>&nbsp;&nbsp;Class实例化:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Class.forName()&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Name.class&nbsp;&nbsp;&nbsp;&nbsp;不会触发类的装载<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;obj.getClass()&nbsp;耗时最多,Oop-&gt;Klass-&gt;Class</p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;说说反射的应用场景?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;加载数据库驱动<br>&nbsp;&nbsp;-&nbsp;解析注解<br>&nbsp;&nbsp;-&nbsp;对象的反序列化<br>&nbsp;&nbsp;-&nbsp;AOP的实现方案<br></p>
+        
+    </body>
+    </html>

@@ -31,7 +31,7 @@
         
             <p class="question">01.yml&nbsp;Q:&nbsp;面向对象三大特性<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对具体问题概括,抽象出公用性质,忽略无关性质<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据抽象(属性/状态)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;行为抽象(行为/功能)<br>&nbsp;&nbsp;封装:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将数据抽象和行为抽象形成一个有机的整体<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对外部世界隐藏内部的实现细节(某些状态值,某些行为的实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;该藏的藏该露的露:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;规范对数据的访问(为数据结构指定访问规范)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;内置数据检查操作数据更安全<br>&nbsp;&nbsp;继承:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;在现有类的基础上构建新的类,形成父类子类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类重用父类的方数据/行为抽象,并可进行扩展<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于代码的重用,简化了子类的设计<br>&nbsp;&nbsp;多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;广义多态:&nbsp;强制多态,重载多态,泛型多态,包含多态<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;包含多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类对父类方法重写,通过上溯将子类赋值给父类<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切调用用父对象的形式,在运行时,对同一消息作出不同响应的能力<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;这三大特性实现了代码的高内聚、低耦合<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调了程序的可维护性和可扩展性</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对具体问题概括,抽象出公用性质,忽略无关性质<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据抽象(属性/状态)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;行为抽象(行为/功能)<br>&nbsp;&nbsp;封装:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(数据抽象,行为抽象)=&gt;类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐藏(数据,方法实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于(规范数据的访问,数据检查安全)<br>&nbsp;&nbsp;继承:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;在现有类的基础上构建新的类,形成父类子类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类重用父类的方数据/行为抽象,并可进行扩展<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于代码的重用,简化了子类的设计<br>&nbsp;&nbsp;多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类对父类方法重写,通过上溯将子类赋值给父类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切调用用父对象的形式,在运行时,对同一消息作出不同响应的能力<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;这三大特性实现了代码的高内聚、低耦合<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调了程序的可维护性和可扩展性</p>
         
             <p class="question">02.yml&nbsp;Q:&nbsp;为什么Java代码可以实现一次编写、到处运行？<br></p>
         
@@ -39,15 +39,15 @@
         
             <p class="question">03.yml&nbsp;Q:&nbsp;说一说你对Java访问权限的了解<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员的访问范围:&nbsp;类内部&nbsp;&lt;&nbsp;同包类&nbsp;&lt;&nbsp;子类&nbsp;&lt;&nbsp;任何类<br>&nbsp;&nbsp;public:<br>&nbsp;&nbsp;&nbsp;&nbsp;class:&nbsp;任何类<br>&nbsp;&nbsp;&nbsp;&nbsp;member:&nbsp;任何类<br>&nbsp;&nbsp;protected:&nbsp;子类<br>&nbsp;&nbsp;default:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;class:&nbsp;同包类<br>&nbsp;&nbsp;&nbsp;&nbsp;member:&nbsp;同包类<br>&nbsp;&nbsp;private:&nbsp;类内部</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员的访问范围:&nbsp;类内部&nbsp;&lt;&nbsp;同包类&nbsp;&lt;&nbsp;子类&nbsp;&lt;&nbsp;任何类<br>&nbsp;&nbsp;权限:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成员<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;public&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任何类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任何类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;protected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同包类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同包类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;private&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本类</p>
         
             <p class="question">04.yml&nbsp;Q:&nbsp;Java的数据类型<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;包括3大类8小类<br>&nbsp;&nbsp;-&nbsp;Number:&nbsp;[byte(1),short(2),int(4),long(8),float(4),double(8)]<br>&nbsp;&nbsp;-&nbsp;char(2)<br>&nbsp;&nbsp;-&nbsp;boolean(?)</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;byte(1),short(2),int(4),long(8),float(4),double(8)]<br>&nbsp;&nbsp;-&nbsp;char(2)<br>&nbsp;&nbsp;-&nbsp;boolean(?)</p>
         
             <p class="question">05.yml&nbsp;Q:&nbsp;全局变量与局部变量的区别<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员变量:&nbsp;类的属性<br>&nbsp;&nbsp;全局变量:&nbsp;static变量<br>&nbsp;&nbsp;局部变量:&nbsp;方法内变量<br>&nbsp;&nbsp;位置:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;成员变量位于堆,初始为全0<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;全局变量位于堆的方法区<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;局部变量位于栈,没有初始值<br>&nbsp;&nbsp;生命周期:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;成员变量随对象的实例化而创建,随对象回收也回收<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;全局变量随类的加载而创建<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;局部变量随函数调用结束,栈帧被销毁而回收<br>&nbsp;&nbsp;识别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据绝对地址访问全局变量<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据栈的相对地址访问局部变量</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型&nbsp;&nbsp;&nbsp;&nbsp;位置&nbsp;&nbsp;&nbsp;&nbsp;初始值&nbsp;&nbsp;&nbsp;生命周期&nbsp;&nbsp;&nbsp;识别<br>&nbsp;&nbsp;-&nbsp;全局变量&nbsp;&nbsp;&nbsp;static&nbsp;&nbsp;方法区&nbsp;&nbsp;&nbsp;0x00&nbsp;&nbsp;&nbsp;&nbsp;同Klass&nbsp;&nbsp;&nbsp;绝对地址<br>&nbsp;&nbsp;-&nbsp;局部变量&nbsp;&nbsp;&nbsp;方法内&nbsp;&nbsp;&nbsp;VM栈&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同栈帧&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相对地址<br>&nbsp;&nbsp;-&nbsp;成员变量&nbsp;&nbsp;&nbsp;&nbsp;成员&nbsp;&nbsp;&nbsp;&nbsp;堆区&nbsp;&nbsp;&nbsp;&nbsp;0x00&nbsp;&nbsp;&nbsp;&nbsp;同对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;绝对地址</p>
         
             <p class="question">06.yml&nbsp;Q:&nbsp;包装类的意义是什么<br></p>
         
@@ -59,11 +59,11 @@
         
             <p class="question">08.yml&nbsp;Q:&nbsp;为什么java要做成单继承,为什么接口可以多继承<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;类的(父类)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写时会产生二义性<br>&nbsp;&nbsp;类的(父类,接口)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写不会出错<br>&nbsp;&nbsp;类的(接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须重写<br>&nbsp;&nbsp;接口的(父接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;同名方法全抽象时无需重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;存在default必须重写<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切重名都可通过重写解决<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写时使用I.super.fun来综合调用重名的方法</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;class的(父类)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写时会产生二义性<br>&nbsp;&nbsp;class的(父类,接口)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写不会出错<br>&nbsp;&nbsp;class的(接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须重写<br>&nbsp;&nbsp;interface的(父接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;同名方法全抽象时无需重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;存在default必须重写<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切重名都可通过重写解决<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写时使用I.super.fun来综合调用重名的方法</p>
         
             <p class="question">09.yml&nbsp;Q:&nbsp;重写和重载的区别<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;重载:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;发生在同一个类中<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(方法名相同,参数的个数或类型不同)构成重载<br>&nbsp;&nbsp;重载的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回值类型的不同不能构成重载,会重定义错误<br>&nbsp;&nbsp;重写:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;发生在子类中<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(方法名相同,参数的个数和类型相同)构成重写<br>&nbsp;&nbsp;重写的桥方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器的方法签名是(方法名,参数列表),JVM的方法签名是(返回类型,方法名,参数列表)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;比如public&nbsp;Number&nbsp;show(){}的重写public&nbsp;Integer&nbsp;show(){}在JVM看来不是重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以要自动生成public&nbsp;Number&nbsp;show(){return&nbsp;show();}重载型<br>&nbsp;&nbsp;重写的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;访问权限要更大,否则不能正常访问<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回类型更小,否则不能赋值给Number<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抛出异常要更少更小,否则不能捕获<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于多继承,对于每个同名方法都要满足上述条件<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;范围&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限制条件<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重载&nbsp;&nbsp;同一个类&nbsp;&nbsp;&nbsp;返回类型不限制,方法名同,参数列表不同<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写&nbsp;&nbsp;父类子类&nbsp;&nbsp;&nbsp;返回类型有显示,方法名同,参数列表不同<br>&nbsp;&nbsp;重写的桥方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器的方法签名是(方法名,参数列表),JVM的方法签名是(返回类型,方法名,参数列表)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;比如public&nbsp;Number&nbsp;show(){}的重写public&nbsp;Integer&nbsp;show(){}在JVM看来不是重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以要自动生成public&nbsp;Number&nbsp;show(){return&nbsp;show();}重载型<br>&nbsp;&nbsp;重写的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;访问权限要更大,否则不能正常访问<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回类型更小,否则不能赋值给Number<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抛出异常要更少更小,否则不能捕获<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于多继承,对于每个同名方法都要满足上述条件<br></p>
         
             <p class="question">10.yml&nbsp;Q:&nbsp;为什么不能重写构造方法<br></p>
         
@@ -83,7 +83,7 @@
         
             <p class="question">14.yml&nbsp;Q:&nbsp;接口和抽象类有什么异同？<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;成员:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;属性:&nbsp;接口可以有属性,但必须初始化(否则无法初始化)<br>&nbsp;&nbsp;&nbsp;&nbsp;构造方法:&nbsp;接口没有构造方法,抽象类有但仅供子类用<br>&nbsp;&nbsp;修饰符:<br>&nbsp;&nbsp;&nbsp;&nbsp;private:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有private属性<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都可以有private方法,但必须马上实现(否则无法实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;protected:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有protected属性<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口没有protected方法<br>&nbsp;&nbsp;初始化块:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口中不允许初始化块和静态初始化块<br>&nbsp;&nbsp;功能:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口是规范,为多模块耦合提供标准,为多系统通信提供标准(上溯为接口类型)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类是模板,供不同的策略作出不同的实现(char)<br>&nbsp;&nbsp;相同点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都不能实例化,&nbsp;需要显式或隐式继承<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类都必须实现其定义的抽象方法</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp;&nbsp;构造方法&nbsp;&nbsp;&nbsp;private属性,方法&nbsp;&nbsp;&nbsp;protected属性,方法&nbsp;&nbsp;&nbsp;初始块<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口&nbsp;&nbsp;&nbsp;&nbsp;初始化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;要方法体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;仅子类用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;要方法体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;功能:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口是规范,为多模块耦合提供标准,为多系统通信提供标准(上溯为接口类型)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类是模板,供不同的策略作出不同的实现<br>&nbsp;&nbsp;相同点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都不能实例化,&nbsp;需要显式或隐式继承<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类都必须实现其定义的抽象方法</p>
         
             <p class="question">15.yml&nbsp;Q:&nbsp;OOP和IOP有哪些区别?<br></p>
         
@@ -97,19 +97,11 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;本质:&nbsp;使被修饰的目标&quot;不可变&quot;<br>&nbsp;&nbsp;修饰属性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;需在构造函数或初始块中初始化,final局部变量的首次赋值视为初始化<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;变量的值不可变&amp;引用的指向不可变<br>&nbsp;&nbsp;修饰方法:&nbsp;方法不可被子类重写<br>&nbsp;&nbsp;修饰类:&nbsp;类不可被继承<br></p>
         
-            <p class="question">18.yml&nbsp;Q:&nbsp;说说反射的应用场景?<br></p>
+            <p class="question">18.yml&nbsp;Q:&nbsp;Lambda与匿名内部类有什么区别?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;加载数据库驱动<br>&nbsp;&nbsp;-&nbsp;解析注解<br>&nbsp;&nbsp;-&nbsp;对象的反序列化<br>&nbsp;&nbsp;-&nbsp;AOP的实现方案<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;Lambda的语法简洁,隐式重写<br>&nbsp;&nbsp;-&nbsp;匿名内部类被编译成单独class文件,Lambda不会<br>&nbsp;&nbsp;-&nbsp;Lambda只适用于单方法接口,&nbsp;匿名内部类使用范围广:普通类,接口,抽象类</p>
         
-            <p class="question">19.yml&nbsp;Q:&nbsp;说说一个类的构造过程?<br></p>
-        
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;前提:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类中没有调用super的构造函数,系统会自动在第一行添加super()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;构造函数中super(..)与this(..)不能共存,因为this(..)第一行为super,会重复构造父类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;构造函数无法显式同时调用super(..)和this(..),因为都必须为第一行<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐式同时调用super(..)与this(..)不会重复构造父类,因为显式的this重定向后不会触发super<br>&nbsp;&nbsp;顺序:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;装载父类(按定义顺序调用static块、static属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;装载子类(按定义顺序调用static块、static属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根据new&nbsp;XXX(..)的参数调用构造方法<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;进入首行的super(..)直到Object<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;初始化类属性(按定义顺序调用init块、成员属性)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;执行构造方法的方法体(不执行this定向后的方法内的super)</p>
-        
-            <p class="question">20.yml&nbsp;Q:&nbsp;Lambda与匿名内部类有什么区别?<br></p>
-        
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;Lambda的语法简洁<br>&nbsp;&nbsp;-&nbsp;每个匿名内部类被编译成单独class文件,Lambda不会<br>&nbsp;&nbsp;-&nbsp;Lambda只适用于单方法接口,&nbsp;匿名内部类使用范围广:普通类,接口,抽象类</p>
-        
-            <p class="question">21.yml&nbsp;Q:&nbsp;Object的hashCode是怎么生成的?<br></p>
+            <p class="question">19.yml&nbsp;Q:&nbsp;Object的hashCode是怎么生成的?<br></p>
         
             <p class="answer">A:<br>&nbsp;&nbsp;总概:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用System.identityHashCode(obj)无视重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;可通过JVM运行参数修改hashCode的生成策略<br>&nbsp;&nbsp;要求:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象相同&nbsp;=&gt;&nbsp;hashCode相同<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象不同&nbsp;=&gt;&nbsp;hashCode未知(尽量不同)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;hashCode不同&nbsp;=&gt;&nbsp;对象未知<br>&nbsp;&nbsp;生成策略:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对象的内存地址(默认)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一种随机数<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;固定值<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;自增</p>
         
