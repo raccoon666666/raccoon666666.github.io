@@ -29,13 +29,13 @@
     </head>
     <body>
         
-            <p class="question">01.yml&nbsp;Q:&nbsp;Java中的IO流结构是怎样的?<br></p>
+            <p class="question">01.yml&nbsp;Q:&amp;nbsp;Java中的IO流结构是怎样的?&lt;br&gt;</p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;分类:&nbsp;输入流输出流,节点流处理流,字节流字符流<br>&nbsp;&nbsp;节点流:&nbsp;从byte[]char[]&nbsp;&&nbsp;从文件&nbsp;&&nbsp;从管道&nbsp;&&nbsp;从多流串联<br>&nbsp;&nbsp;处理流:&nbsp;缓冲&nbsp;&&nbsp;序列化对象&nbsp;&&nbsp;读写基本数据&nbsp;&&nbsp;可放回&nbsp;&&nbsp;可输出到控制台<br>&nbsp;&nbsp;转换流:&nbsp;PrintWriter&nbsp;&&nbsp;InputStreamReader<br></p>
+            <p class="answer">A:&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;分类:&amp;nbsp;输入流输出流,节点流处理流,字节流字符流&lt;br&gt;&amp;nbsp;&amp;nbsp;节点流:&amp;nbsp;从byte[]char[]&amp;nbsp;&amp;&amp;nbsp;从文件&amp;nbsp;&amp;&amp;nbsp;从管道&amp;nbsp;&amp;&amp;nbsp;从多流串联&lt;br&gt;&amp;nbsp;&amp;nbsp;处理流:&amp;nbsp;缓冲&amp;nbsp;&amp;&amp;nbsp;序列化对象&amp;nbsp;&amp;&amp;nbsp;读写基本数据&amp;nbsp;&amp;&amp;nbsp;可放回&amp;nbsp;&amp;&amp;nbsp;可输出到控制台&lt;br&gt;&amp;nbsp;&amp;nbsp;转换流:&amp;nbsp;PrintWriter&amp;nbsp;&amp;&amp;nbsp;InputStreamReader&lt;br&gt;</p>
         
-            <p class="question">02.yml&nbsp;Q:&nbsp;Java如何序列化?<br></p>
+            <p class="question">02.yml&nbsp;Q:&amp;nbsp;Java如何序列化?&lt;br&gt;</p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;内置序列化:<br>&nbsp;&nbsp;&nbsp;&nbsp;要求:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类实现Serializable接口(子类将自动实现该接口)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类定义常量serialVersionUID表示当前的版本(避免反序列化冲突)<br>&nbsp;&nbsp;&nbsp;&nbsp;调用方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用ObjectInputStream.writeObject()序列化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用ObjectInputStream.readObject()反序列化<br>&nbsp;&nbsp;&nbsp;&nbsp;序列过程:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;反序列化时,若类实现了Serializable接口则用反射构造,否则用new&nbsp;XX()构造<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以子类实现了Serializable而父类没有时,将调用new&nbsp;Father();<br>&nbsp;&nbsp;其他序列化:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;JSON,GSON,Fastjson,Jackson<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Protobuf<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thrift<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Avro</p>
+            <p class="answer">A:&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;内置序列化:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要求:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;数据类实现Serializable接口(子类将自动实现该接口)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;数据类定义常量serialVersionUID表示当前的版本(避免反序列化冲突)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;调用方法:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;使用ObjectInputStream.writeObject()序列化&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;使用ObjectInputStream.readObject()反序列化&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;序列过程:&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;反序列化时,若类实现了Serializable接口则用反射构造,否则用new&amp;nbsp;XX()构造&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;所以子类实现了Serializable而父类没有时,将调用new&amp;nbsp;Father();&lt;br&gt;&amp;nbsp;&amp;nbsp;其他序列化:&amp;nbsp;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;JSON,GSON,Fastjson,Jackson&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Protobuf&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Thrift&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;-&amp;nbsp;Avro</p>
         
     </body>
     </html>
