@@ -59,11 +59,43 @@
         
             <p class="question">08.yml&nbsp;Q:&nbsp;如何分页?如何对分页优化?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;分页方式:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Page返回一个Page<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Skip,Page跳过前N行返回一个Page<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Page&nbsp;OFFSET&nbsp;Skip跳过前N行返回一个Page<br>&nbsp;&nbsp;优化:<br>&nbsp;&nbsp;&nbsp;&nbsp;定向查找:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;若行按id递增存储,且没有丢失id<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;SELECT&nbsp;id&nbsp;FROM&nbsp;t&nbsp;id&nbsp;BETWEEN&nbsp;9999&nbsp;AND&nbsp;9999+10<br>&nbsp;&nbsp;&nbsp;&nbsp;索引覆盖:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;建立联合索引(id,sort_col)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;SELECT&nbsp;id&nbsp;FROM&nbsp;t&nbsp;ORDER&nbsp;BY&nbsp;sort_col&nbsp;LIMIT&nbsp;9999,10<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;然后使用对该临时表关联,以获取其他列值<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;==&gt;&nbsp;新索引树的叶子节点保存id值,减少调块数量<br>&nbsp;&nbsp;&nbsp;&nbsp;缓存子查询:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;WHERE&nbsp;id&gt;缓存9999&nbsp;ORDER&nbsp;BY&nbsp;id&nbsp;LIMIT&nbsp;10<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;==&gt;&nbsp;避免对跳过的行遍历(缓存后表不能增删,否则数量关系变了)<br>&nbsp;&nbsp;&nbsp;&nbsp;转位置查询:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;若无需对表动态排序<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;则使用position列记录行号,建索引<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用WHERE&nbsp;position&nbsp;BETWEEN&nbsp;a&nbsp;AND&nbsp;b查询<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;分页方式:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Page返回一个Page<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Skip,Page跳过前N行返回一个Page<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;LIMIT&nbsp;Page&nbsp;OFFSET&nbsp;Skip跳过前N行返回一个Page<br>&nbsp;&nbsp;优化:<br>&nbsp;&nbsp;&nbsp;&nbsp;定向查找:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;若行按id递增存储,且没有丢失id<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;SELECT&nbsp;id&nbsp;FROM&nbsp;t&nbsp;id&nbsp;BETWEEN&nbsp;9999&nbsp;AND&nbsp;9999+10<br>&nbsp;&nbsp;&nbsp;&nbsp;缓存子查询:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;WHERE&nbsp;id&gt;缓存9999&nbsp;ORDER&nbsp;BY&nbsp;id&nbsp;LIMIT&nbsp;10<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;==&gt;&nbsp;避免对跳过的行遍历(缓存后表不能增删,否则数量关系变了)<br>&nbsp;&nbsp;&nbsp;&nbsp;索引覆盖:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;建立联合索引(id,sort_col)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;SELECT&nbsp;id&nbsp;FROM&nbsp;t&nbsp;ORDER&nbsp;BY&nbsp;sort_col&nbsp;LIMIT&nbsp;9999,10<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;然后使用对该临时表关联,以获取其他列值<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;==&gt;&nbsp;新索引树的叶子节点保存id值,减少调块数量<br>&nbsp;&nbsp;&nbsp;&nbsp;对称查询:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;查询表中后半部分时,将表倒序排列,转换为查询表中前半部分<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使得两头速度大于中间速度<br>&nbsp;&nbsp;&nbsp;&nbsp;转位置查询:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;若无需对表动态排序<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;则使用position列记录行号,建索引<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用WHERE&nbsp;position&nbsp;BETWEEN&nbsp;a&nbsp;AND&nbsp;b查询<br></p>
         
             <p class="question">09.yml&nbsp;Q:&nbsp;什么是SQL注入攻击?如何避免?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;参数检验<br>&nbsp;&nbsp;-&nbsp;预编译(预编译是什么?)<br>&nbsp;&nbsp;-&nbsp;MyBatis用#占位符<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;根源:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将用户输入的字符串直接拼接进SQL语句<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当用户输入&quot;OR&nbsp;1=1&nbsp;--&quot;时,WHERE条件恒成立<br>&nbsp;&nbsp;解决方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对特殊符号检测并转义<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;禁止输入特殊符号<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;预编译(JDBC用PreparedStatement,MyBatis用#)<br></p>
+        
+            <p class="question">10.yml&nbsp;Q:&nbsp;SQL的预编译机制是什么?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;引出:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;每条SQL语句都经过词法、语法、语义、优化、执行计划,非常耗时<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当多条SQL语句的模板相同,只是参数不同时,使用编译好的模板即可<br>&nbsp;&nbsp;作用:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;模板编译后被缓存,加速了后续SQL语句的执行<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;模板编译后接收的参数不再拼接,防止SQL注入</p>
+        
+            <p class="question">11.yml&nbsp;Q:&nbsp;什么是数据库的事务?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;定义:&nbsp;将一系列操作视为一个整体,要么完全执行要么不执行<br>&nbsp;&nbsp;特性:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解释&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子系统<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;A&nbsp;&nbsp;原子性&nbsp;&nbsp;事务中的操作出错后回滚,只能都做与都不做&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事务子系统<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;C&nbsp;&nbsp;一致性&nbsp;&nbsp;事务只有执行前与后两种状态,完整性约束不变&nbsp;&nbsp;&nbsp;完整性子系统<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;I&nbsp;&nbsp;隔离性&nbsp;&nbsp;支持多事务并发,事务提交前对其他事务不可见&nbsp;&nbsp;&nbsp;并发控制子系统&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;D&nbsp;&nbsp;持久性&nbsp;&nbsp;事务提交后不可回滚,但宕机后可恢复数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;恢复子系统&nbsp;<br></p>
+        
+            <p class="question">12.yml&nbsp;Q:&nbsp;数据库有哪些事务类型?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;扁平事务:&nbsp;操作只能全做,回滚到全不做&nbsp;&nbsp;&nbsp;√<br>&nbsp;&nbsp;保存点扁平事务:&nbsp;支持回滚到断点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;√<br>&nbsp;&nbsp;链事务:&nbsp;支持断点,事务间隐式传递上下文&nbsp;&nbsp;√<br>&nbsp;&nbsp;分布式事务:&nbsp;分布式环境下的(扁平事务)&nbsp;&nbsp;&nbsp;√<br>&nbsp;&nbsp;嵌套事务:&nbsp;顶层事务控制子事务&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x<br></p>
+        
+            <p class="question">13.yml&nbsp;Q:&nbsp;数据库的事务的性质是如何实现的?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;A原子性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[UNDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;回滚时反向执行UNDO&nbsp;log<br>&nbsp;&nbsp;C一致性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库层<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;应用层保证语义正确<br>&nbsp;&nbsp;I隔离性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<br>&nbsp;&nbsp;D持久性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[BufferPool]作磁盘的缓冲(定期写回法),若宕机则丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[REDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据修改先存log、再存Buffer,防止宕机后丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;提交事务后根据log写入磁盘,宕机后重启读取log重新写入数据</p>
+        
+            <p class="question">14.yml&nbsp;Q:&nbsp;数据库持久性设计BufferPool缓冲是否和REDO文件矛盾?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IO方式&nbsp;&nbsp;&nbsp;&nbsp;数据页<br>&nbsp;&nbsp;-&nbsp;缓冲写回&nbsp;&nbsp;&nbsp;&nbsp;随机访问&nbsp;&nbsp;&nbsp;1个数据页(16KB)<br>&nbsp;&nbsp;-&nbsp;执行REDO&nbsp;&nbsp;&nbsp;&nbsp;顺序访问&nbsp;&nbsp;&nbsp;1个磁盘块(512B)</p>
+        
+            <p class="question">15.yml&nbsp;Q:&nbsp;数据库的事务并发有哪些问题?<br></p>
+        
+            <p class="answer">A:&nbsp;</p>
+        
+            <p class="question">16.yml&nbsp;Q:&nbsp;数据库如何做到并发控制?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MyISAM:只支持表锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;InnoDB:支持表锁、行锁(要有索引,有死锁的可能)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;MVCC:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不使用锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;非阻塞读,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;解决了脏读,不可重复读,幻读<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;没有解决更新丢失<br></p>
+        
+            <p class="question">17.yml&nbsp;Q:&nbsp;数据库有哪些事务隔离级别?解决了哪些问题?<br></p>
+        
+            <p class="answer">A:&nbsp;<br></p>
         
     </body>
     </html>
