@@ -1,0 +1,61 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;面向对象三大特性<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对具体问题概括,抽象出公用性质,忽略无关性质<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据抽象(属性/状态)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;行为抽象(行为/功能)<br>&nbsp;&nbsp;封装:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(数据抽象,行为抽象)=&gt;类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐藏(数据,方法实现)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于(规范数据的访问,数据检查安全)<br>&nbsp;&nbsp;继承:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;在现有类的基础上构建新的类,形成父类子类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类重用父类的方数据/行为抽象,并可进行扩展<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有利于代码的重用,简化了子类的设计<br>&nbsp;&nbsp;多态:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类对父类方法重写,通过上溯将子类赋值给父类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切调用用父对象的形式,在运行时,对同一消息作出不同响应的能力<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;这三大特性实现了代码的高内聚、低耦合<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调了程序的可维护性和可扩展性</p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;什么是面向对象,与面向过程的差别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;面向对象:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将系统的需求抽象成各种&lt;对象&gt;之间的交互<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将这些对象的本质特点抽象为类,作为系统的基本单位<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使得系统能直接映射到物理世界<br>&nbsp;&nbsp;面向过程:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将系统的需求抽象成各种&lt;流程&gt;之间的调用,对数据得加工<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将这些流程自顶向下/逐步求精地划分为函数,作为系统的基本单位<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不符合人的思维习惯,可扩展性不如面向对象</p>
+        
+            <p class="question">03.yml&nbsp;Q:&nbsp;为什么java要做成单继承,为什么接口可以多继承<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;class的(父类)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写时会产生二义性<br>&nbsp;&nbsp;class的(父类,接口)有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;继承不会出错<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;调用和重写不会出错<br>&nbsp;&nbsp;class的(接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;必须重写<br>&nbsp;&nbsp;interface的(父接口)中有相同签名的方法时:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;同名方法全抽象时无需重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;存在default必须重写<br>&nbsp;&nbsp;总结:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一切重名都可通过重写解决<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写时使用I.super.fun来综合调用重名的方法</p>
+        
+            <p class="question">04.yml&nbsp;Q:&nbsp;重写和重载的区别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;范围&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限制条件<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重载&nbsp;&nbsp;同一个类&nbsp;&nbsp;&nbsp;返回类型不限制,方法名同,参数列表不同<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;重写&nbsp;&nbsp;父类子类&nbsp;&nbsp;&nbsp;返回类型有显示,方法名同,参数列表不同<br>&nbsp;&nbsp;重写的桥方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;编译器的方法签名是(方法名,参数列表),JVM的方法签名是(返回类型,方法名,参数列表)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;比如public&nbsp;Number&nbsp;show(){}的重写public&nbsp;Integer&nbsp;show(){}在JVM看来不是重写<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以要自动生成public&nbsp;Number&nbsp;show(){return&nbsp;show();}重载型<br>&nbsp;&nbsp;重写的限制条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;访问权限要更大,否则不能正常访问<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;返回类型更小,否则不能赋值给Number<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抛出异常要更少更小,否则不能捕获<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于多继承,对于每个同名方法都要满足上述条件<br></p>
+        
+            <p class="question">05.yml&nbsp;Q:&nbsp;为什么不能重写构造方法<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;构造方法没有返回值名字与类名相同,所以子类无法重写只会视为一个普通方法<br>&nbsp;&nbsp;-&nbsp;构造方法无法被继承,所以没有重写一说<br>&nbsp;&nbsp;-&nbsp;重写时为了多态,通过调用已存在对象的方法来实现多态,构造方法产生对象,所以重写它没有意义<br></p>
+        
+            <p class="question">06.yml&nbsp;Q:&nbsp;接口和抽象类有什么异同？<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp;&nbsp;构造方法&nbsp;&nbsp;&nbsp;private属性,方法&nbsp;&nbsp;&nbsp;protected属性,方法&nbsp;&nbsp;&nbsp;初始块<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口&nbsp;&nbsp;&nbsp;&nbsp;初始化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;要方法体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;仅子类用&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;要方法体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;功能:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;接口是规范,为多模块耦合提供标准,为多系统通信提供标准(上溯为接口类型)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;抽象类是模板,供不同的策略作出不同的实现<br>&nbsp;&nbsp;相同点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;都不能实例化,&nbsp;需要显式或隐式继承<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子类都必须实现其定义的抽象方法</p>
+        
+            <p class="question">07.yml&nbsp;Q:&nbsp;OOP和IOP有哪些区别?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;抽象级别:&nbsp;OOP强调封装继承多态,IOP强调抽象和多态<br>&nbsp;&nbsp;用途:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;OOP通过对象间协作完成系统任务<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;IOP通过多态实现多策略,在类基础上抽象出公用方法作为接口,调用方只关心这些接口里的方法<br>&nbsp;&nbsp;耦合:&nbsp;IOP耦合度比OOP低<br>&nbsp;&nbsp;测试:&nbsp;IOP可测试性比OOP高</p>
+        
+    </body>
+    </html>
