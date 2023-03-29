@@ -33,9 +33,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;int&nbsp;4字节<br>&nbsp;&nbsp;-&nbsp;float&nbsp;4字节<br>&nbsp;&nbsp;-&nbsp;datetime&nbsp;8字节<br>&nbsp;&nbsp;-&nbsp;timestamp&nbsp;4字节</p>
         
-            <p class="question">02.yml&nbsp;Q:&nbsp;InnoDB和Myisam有哪些区别?<br></p>
+            <p class="question">02.yml&nbsp;Q:&nbsp;InnoDB和MyISAM有哪些区别?<br></p>
         
-            <p class="answer">A:&nbsp;<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;完整性:&nbsp;MyISAM不支持外键<br>&nbsp;&nbsp;表行数:&nbsp;InnoDB不支持<br>&nbsp;&nbsp;索引:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MyISAM不支持聚簇索引,MyISAM不支持默认主键索引,InnoDB不支持全文索引<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MyISAM保存行地址;InnoDB保存主键id<br>&nbsp;&nbsp;事务:&nbsp;MyISAM不支持,InnoDB默认把每条SQL封装成事务<br>&nbsp;&nbsp;锁:&nbsp;MyISAM不支持行锁</p>
         
             <p class="question">03.yml&nbsp;Q:&nbsp;如何分页?如何对分页优化?<br></p>
         
@@ -51,7 +51,7 @@
         
             <p class="question">06.yml&nbsp;Q:&nbsp;数据库的事务的性质是如何实现的?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;A原子性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[UNDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;回滚时反向执行UNDO&nbsp;log<br>&nbsp;&nbsp;C一致性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库层<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;应用层保证语义正确<br>&nbsp;&nbsp;I隔离性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<br>&nbsp;&nbsp;D持久性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[BufferPool]作磁盘的缓冲(定期写回法),若宕机则丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[REDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据修改先存log、再存Buffer,防止宕机后丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;提交事务后根据log写入磁盘,宕机后重启读取log重新写入数据</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;A原子性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[UNDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;回滚时反向执行UNDO&nbsp;log<br>&nbsp;&nbsp;C一致性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据完整性,约束条件,事务隔离<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;应用层保证语义正确<br>&nbsp;&nbsp;I隔离性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;锁机制<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MVCC机制<br>&nbsp;&nbsp;D持久性:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[BufferPool]作磁盘的缓冲(定期写回法),若宕机则丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;引入[REDO&nbsp;log]记录事务内执行的SQL修改<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据修改先存log、再存Buffer,防止宕机后丢失数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;提交事务后根据log写入磁盘,宕机后重启读取log重新写入数据</p>
         
             <p class="question">07.yml&nbsp;Q:&nbsp;数据库持久性设计BufferPool缓冲是否和REDO文件矛盾?<br></p>
         
@@ -59,11 +59,11 @@
         
             <p class="question">08.yml&nbsp;Q:&nbsp;数据库如何做到并发控制?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MyISAM:只支持表锁<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;InnoDB:支持表锁、行锁(要有索引,有死锁的可能)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;MVCC:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不使用锁<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;非阻塞读,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;解决了脏读,不可重复读,幻读<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;没有解决更新丢失<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;保存数据的历史版本，根据比较版本号来处理数据是否显示&nbsp;&nbsp;</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;MVCC:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;读不使用锁,读写可同时<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;解决了脏读,不可重复读,幻读&nbsp;;&nbsp;没有解决更新丢失<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库没有多版本,是数据有多版本<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;非阻塞读,<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;保存数据的历史版本，根据比较版本号来处理数据是否显示<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐藏列:(最近事务id,UNDO指针,)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;版本链:UNDO中指向更早UNDO</p>
         
             <p class="question">09.yml&nbsp;Q:&nbsp;数据库有哪些事务隔离级别?解决了哪些问题?<br></p>
         
-            <p class="answer">A:&nbsp;<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;隔离级别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;脏读&nbsp;&nbsp;&nbsp;&nbsp;丢失Ⅰ&nbsp;&nbsp;&nbsp;不可重读&nbsp;&nbsp;&nbsp;&nbsp;丢失Ⅱ&nbsp;&nbsp;&nbsp;幻读&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-S&nbsp;&nbsp;&nbsp;序列化&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1]&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-RR&nbsp;&nbsp;可重复读&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1]&nbsp;&nbsp;&nbsp;_{1}_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-RC&nbsp;&nbsp;读已提交&nbsp;&nbsp;&nbsp;&nbsp;[1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-RU&nbsp;&nbsp;读未提交&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;实现原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;S.幻读:&nbsp;所有事务串行<br>&nbsp;&nbsp;&nbsp;&nbsp;RR:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可重读:&nbsp;(1)加S锁,提交/回滚解锁(2)InnoDB用MVCC<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;丢失Ⅱ:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幻读:&nbsp;加间隙锁,提交/回滚解锁<br>&nbsp;&nbsp;&nbsp;&nbsp;RC.脏读:&nbsp;加S锁,读完解锁<br>&nbsp;&nbsp;&nbsp;&nbsp;RU.丢失Ⅰ:&nbsp;加X锁,提交/回滚解锁<br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;InnoDB下间隙锁解决了幻读,使用Next-Key&nbsp;Lock算法实现行锁解决不可重复读,MVCC</p>
         
     </body>
     </html>
