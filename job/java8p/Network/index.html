@@ -37,5 +37,25 @@
         
             <p class="answer">A:&nbsp;监听,伪装,篡改,DNS劫持</p>
         
+            <p class="question">03.yml&nbsp;Q:&nbsp;请说明OSI七层模型<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;作用:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;通过标准化接口,使上下层通过[服务]交互<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;通过标准化的语法、语义、同步,使对等层通过[协议]交互<br>&nbsp;&nbsp;分层:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;应用层&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为用户提供接口&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程&nbsp;&nbsp;&nbsp;FTP,SMTP,POP3,HTTP,DNS,TELnet<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;表示层&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格式化,编码,压缩<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;会话层&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序会话,安全,同步<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;传输层&nbsp;&nbsp;&nbsp;T/U&nbsp;&nbsp;&nbsp;&nbsp;可靠传输(修改错误)信道复用&nbsp;&nbsp;&nbsp;&nbsp;端口&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TCP,UDP&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;网络层&nbsp;&nbsp;数据报&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;路由路径&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网络&nbsp;&nbsp;&nbsp;ICMP,ARP,RARP,IP,IGMP,OSPF&nbsp;&nbsp;&nbsp;&nbsp;路由器<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;链路层&nbsp;&nbsp;&nbsp;帧&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无错传输(发现帧错误)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点&nbsp;&nbsp;&nbsp;&nbsp;PPP,HDLC,SDLC,STP,ARQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交换机,网卡,网桥<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;物理层&nbsp;&nbsp;&nbsp;bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物理传输&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中继器,集线器,网卡<br>&nbsp;&nbsp;五层模型:&nbsp;应用层-传输层-网际层-数据链路层-物理层<br>&nbsp;&nbsp;四层模型:&nbsp;应用层-传输层-网际层-网络接口层</p>
+        
+            <p class="question">04.yml&nbsp;Q:&nbsp;TCP与UDP有什么区别?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;TCP是面向连接的,传输数据前需要建立连接<br>&nbsp;&nbsp;-&nbsp;TCP是点对点通信,UDP支持多对多通信<br>&nbsp;&nbsp;-&nbsp;TCP保证可靠(不丢失,不重复,不被改,按序)<br>&nbsp;&nbsp;-&nbsp;TCP有拥塞控制,控制发送的速率,控制报文长度<br>&nbsp;&nbsp;-&nbsp;TCP首部20字节,UDP首部8字节<br>&nbsp;&nbsp;-&nbsp;TCP面向字节(将数据分包),UDP面向报文(将数据当报文直接发送)<br>&nbsp;&nbsp;-&nbsp;TCP使用场景是数据完整性,UDP使用场景是通信实时性</p>
+        
+            <p class="question">05.yml&nbsp;Q:&nbsp;TCP的三次握手过程?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;一次握手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;A发送[SYN]请求连接,进入[SYN_SNET]状态<br>&nbsp;&nbsp;二次握手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;B收到后发送[SYN-ACK]确认响应请求,进入[SYN_RCVD]状态<br>&nbsp;&nbsp;&nbsp;&nbsp;B设置接收缓存,接收接下来收到的数据<br>&nbsp;&nbsp;三次握手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;A发送[ACK]表名已收到确认,进入[ESTABLISHED]状态<br>&nbsp;&nbsp;&nbsp;&nbsp;B收到ACK包后进入[ESTABLISHED]状态,开始使用缓存的数据<br>&nbsp;&nbsp;&nbsp;&nbsp;*如果不作确认,那么握1握2后即被B视为有效连接;当滞留握1到达B则建立了无效连接</p>
+        
+            <p class="question">06.yml&nbsp;Q:&nbsp;TCP四次挥手过程?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;第一次挥手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;A发送[FIN]包,请求断开,进入[FIN-WAIT-1]状态<br>&nbsp;&nbsp;第二次挥手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;B发送[ACK]包,确认断开请求,进入[CLOSE-WAIT]状态<br>&nbsp;&nbsp;&nbsp;&nbsp;A收到ACK包后,进入[FIN-WAIT-2]<br>&nbsp;&nbsp;&nbsp;&nbsp;之后A进入收尾阶段,开启剩余包缓存,等待B没发完的包<br>&nbsp;&nbsp;&nbsp;&nbsp;*如果不确认,A直接等待接收,那么当FIN丢失时B持续发包,A只接不回造成AB死锁<br>&nbsp;&nbsp;第三次挥手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;B发送[FIN-ACK]包,表示剩余数据发送完毕,进入[LAST-ACK]状态<br>&nbsp;&nbsp;第四次挥手:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;A发送[ACK]包,表示收到剩余终止信号,进入[TIME-WAIT]状态,等待2MSL时间<br>&nbsp;&nbsp;&nbsp;&nbsp;B收到ACK包后,得知A已停止等待剩余包,进入[CLOSED]状态<br>&nbsp;&nbsp;&nbsp;&nbsp;*如果不确认,B发送完剩余直接断开,当FIN包丢失时A一直等待剩余包<br>&nbsp;&nbsp;&nbsp;&nbsp;*如果不等待2MSL,A直接断开;那么当握4丢失,B将永远等待<br>&nbsp;&nbsp;&nbsp;&nbsp;*如果不等待2MSL,则滞留的挥手包会干扰下次握手<br></p>
+        
+            <p class="question">07.yml&nbsp;Q:&nbsp;IP地址如何划分?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;分类IP:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;0.0.0.0&nbsp;未分配前的默认IP<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;255.255.255.255&nbsp;通用广播<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;127.*.*.*&nbsp;环回测试<br>&nbsp;&nbsp;划分子网:<br>&nbsp;&nbsp;&nbsp;&nbsp;子网:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子网号全0表示划分前这个网络本身<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子网号全1表示划分前这个网络的广播地址<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以子网号至少占2bit<br>&nbsp;&nbsp;&nbsp;&nbsp;主机:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主机号全0表示划分后这个子网的本身<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主机号全1表示划分后这个子网的广播地址<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以主机号至少占2bit<br>&nbsp;&nbsp;CIDR:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;网络号可以全0或全1<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主机号不能全0或全1</p>
+        
     </body>
     </html>

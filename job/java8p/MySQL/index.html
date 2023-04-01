@@ -69,5 +69,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;饥饿:&nbsp;X锁被阻塞,然后不断有S抢锁<br>&nbsp;&nbsp;活锁:&nbsp;非公平锁(用公平锁即可解决)<br>&nbsp;&nbsp;死锁:&nbsp;#两个事务分别持有AB,然后抢锁BA<br>&nbsp;&nbsp;&nbsp;&nbsp;预防:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一次封锁法(刀叉全拿),对于资源需求多的事务饥饿<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;顺序封锁法(按规定顺序抢锁),运行时对资源顺序难以判断<br>&nbsp;&nbsp;&nbsp;&nbsp;检测:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;超时法(事物阻塞时间长=&gt;自动回滚)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;等待图法(事务-资源&nbsp;等待图,有回路=&gt;自动回滚)<br></p>
         
+            <p class="question">11.yml&nbsp;Q:&nbsp;什么是MySQL的主从同步?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;主服务器:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;更新数据时,将数据变化情况写入BinLog<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BinLog分类:(记录数据变化/记录引起更新的语句)<br>&nbsp;&nbsp;从服务器:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;从服务器使用三个线程,一个远程读取BinLog,<br>&nbsp;&nbsp;&nbsp;&nbsp;一个将获取的数据写入RelayLog,<br>&nbsp;&nbsp;&nbsp;&nbsp;一个执行RelayLog以实现数据同步</p>
+        
     </body>
     </html>

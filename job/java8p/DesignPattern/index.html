@@ -1,0 +1,45 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;设计模式的7大原则?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;SOLID:<br>&nbsp;&nbsp;&nbsp;&nbsp;单一职责原则SRP:&nbsp;应该对类个功能合理划分<br>&nbsp;&nbsp;&nbsp;&nbsp;开闭原则OCP:&nbsp;对扩展开放,对修改关闭<br>&nbsp;&nbsp;&nbsp;&nbsp;里氏替换原则LSP:&nbsp;子类可完全当父类使用<br>&nbsp;&nbsp;&nbsp;&nbsp;接口隔离原则ISP:&nbsp;接口也要满足SRP<br>&nbsp;&nbsp;&nbsp;&nbsp;依赖倒置原则DIP:&nbsp;接口位于系统中层,顶层调用接口,底层实现接口<br>&nbsp;&nbsp;迪米特原则DP:&nbsp;不要凭空出现陌生类<br>&nbsp;&nbsp;组合聚合原则CRP:&nbsp;组合优先于继承</p>
+        
+            <p class="question">02.yml&nbsp;Q:&nbsp;单例模式的4种实现方法的优劣<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;饿汉式加载:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;实现简单,线程安全<br>&nbsp;&nbsp;&nbsp;&nbsp;单例需要的资源较多时,影响系统启动时间<br>&nbsp;&nbsp;懒汉式加载-静态同步:&nbsp;每次都要加锁,性能差<br>&nbsp;&nbsp;懒汉式加载-块同步:&nbsp;每次都要判断<br>&nbsp;&nbsp;懒汉式加载-静态内部类:&nbsp;最简单的懒加载<br></p>
+        
+            <p class="question">03.yml&nbsp;Q:&nbsp;工厂模式有哪些实现?有哪些优缺点?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;目的:&nbsp;实例化前需要加载资源,所以要避免直接使用new实例化<br>&nbsp;&nbsp;简单工厂:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;用途:&nbsp;对于一个产品族,可通过输入参数控制产出具体产品类<br>&nbsp;&nbsp;&nbsp;&nbsp;缺点:&nbsp;使用switch模式匹配硬编码,增加具体产品类会违反OCP<br>&nbsp;&nbsp;工厂方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;用途:&nbsp;一个具体产品类对于一个工厂<br>&nbsp;&nbsp;&nbsp;&nbsp;缺点:&nbsp;工厂与产品一对一,造成工厂类数量过多<br>&nbsp;&nbsp;抽象工厂:<br>&nbsp;&nbsp;&nbsp;&nbsp;用途:&nbsp;使用抽象工厂规定需实现的生产过程,每个工厂生产多种产品族<br>&nbsp;&nbsp;&nbsp;&nbsp;缺点:&nbsp;使用接口方法规定产品族,增加产品族会违法OCP</p>
+        
+    </body>
+    </html>
