@@ -29,13 +29,17 @@
     </head>
     <body>
         
-            <p class="question">01.yml&nbsp;Q:&nbsp;Redis支持哪些数据类型?如何对其CURD?<br></p>
+            <p class="question">00.yml&nbsp;Q:&nbsp;Redis支持哪些数据类型?如何对其CURD?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;stirng:&nbsp;set,del,set,get<br>&nbsp;&nbsp;list:&nbsp;lpush,lpop,lset,lindex<br>&nbsp;&nbsp;set:&nbsp;sadd,srem,-,sismember<br>&nbsp;&nbsp;zset:&nbsp;zadd,zrem,zincrby,zrange<br>&nbsp;&nbsp;hash:&nbsp;hset,hdel,-,hget</p>
         
+            <p class="question">01.yml&nbsp;Q:&nbsp;Redis有哪些应用场景?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;计数器:&nbsp;点赞数,评论数,播放数<br>&nbsp;&nbsp;限时数据:&nbsp;验证码,Token,限流令牌<br>&nbsp;&nbsp;分布式:&nbsp;分布式锁,消息队列<br>&nbsp;&nbsp;全局缓存:&nbsp;分页书签,字典值,SESSION<br>&nbsp;&nbsp;利用数据结构:<br>&nbsp;&nbsp;&nbsp;&nbsp;bitmap:&nbsp;活跃用户数<br>&nbsp;&nbsp;&nbsp;&nbsp;set:&nbsp;结合运算<br>&nbsp;&nbsp;&nbsp;&nbsp;zset:&nbsp;排行榜</p>
+        
             <p class="question">02.yml&nbsp;Q:&nbsp;Redis为什么能解决高并发的问题?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;基于内存,读写速度比磁盘快<br>&nbsp;&nbsp;-&nbsp;基于单线程,减少线程切换的时间耗费,避免了线程同步<br>&nbsp;&nbsp;-&nbsp;基于非阻塞IO多路复用,可处理并发连接<br>&nbsp;&nbsp;-&nbsp;基于Hash结构,另外使用压缩表(压缩短数据)、跳表对数据存储进行优化&nbsp;&nbsp;</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;基于内存,读写速度比磁盘快<br>&nbsp;&nbsp;-&nbsp;基于Hash结构,另外使用压缩表、跳表对数据存储进行优化&nbsp;&nbsp;<br>&nbsp;&nbsp;-&nbsp;基于单线程,减少线程切换的时间耗费,避免了线程同步<br>&nbsp;&nbsp;-&nbsp;基于非阻塞IO多路复用,可处理并发连接</p>
         
             <p class="question">03.yml&nbsp;Q:&nbsp;Redis为什么要数据持久化?有哪些方式?各有什么优缺点?<br></p>
         

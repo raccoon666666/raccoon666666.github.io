@@ -35,7 +35,7 @@
         
             <p class="question">02.yml&nbsp;Q:&nbsp;说说完全二叉树中的各种等式关系?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;前提:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根节点记为编号1,按层序遍历编号<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;根节点记为第1层<br>&nbsp;&nbsp;关系:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;三角树&nbsp;=&nbsp;N(2N,2N-1)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;最后一个分支节点的编号&nbsp;=&nbsp;[N/2]<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;树高度&nbsp;=&nbsp;[logN]+1<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第i层节点数&nbsp;&lt;=&nbsp;2^(i-1)</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;前提:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;编号:&nbsp;根节点记为1,按层序遍历编号<br>&nbsp;&nbsp;&nbsp;&nbsp;层号:&nbsp;根节点记为1层<br>&nbsp;&nbsp;&nbsp;&nbsp;度:&nbsp;等价于孩子节点的个数<br>&nbsp;&nbsp;关系:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;三角树&nbsp;=&nbsp;N(2N,2N-1)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;最后一个分支节点的编号&nbsp;=&nbsp;[N/2]<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;树高度&nbsp;=&nbsp;[logN]+1<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;第i层节点数&nbsp;&lt;=&nbsp;2^(i-1)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;树的总边数&nbsp;=&nbsp;n&nbsp;-&nbsp;1<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;叶子节点个数&nbsp;=&nbsp;n2&nbsp;+&nbsp;1</p>
         
             <p class="question">03.yml&nbsp;Q:&nbsp;树和森林的遍历方法有哪些?<br></p>
         
@@ -44,6 +44,10 @@
             <p class="question">04.yml&nbsp;Q:&nbsp;树和森林如何转二叉树?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;树转二叉树:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于每个节点,将其子节点横向连接<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于每个节点,只保留与第一个子节点的连接,其他断开<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;顺时针旋转<br>&nbsp;&nbsp;森林转二叉树:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将每棵树转二叉树<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;依次将每颗二叉树添加为前一颗二叉树根节点的右子树</p>
+        
+            <p class="question">05.yml&nbsp;Q:&nbsp;有哪些查找方式?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;二分查找:&nbsp;直接选有序表中点,均分<br>&nbsp;&nbsp;&nbsp;&nbsp;插值查找:&nbsp;按value比例划分(假设有序表数据均匀分布)<br>&nbsp;&nbsp;&nbsp;&nbsp;斐波那契查找:&nbsp;按黄金分割点划分<br>&nbsp;&nbsp;排序树查找:&nbsp;将数据构成排序树,按O(logN)查找<br>&nbsp;&nbsp;散列查找:&nbsp;将数据构成Hash表,按O(1)查找</p>
         
     </body>
     </html>
