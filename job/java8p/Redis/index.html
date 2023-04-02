@@ -55,7 +55,7 @@
         
             <p class="question">06.yml&nbsp;Q:&nbsp;Redis的部署模式有哪些?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;主从模式:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:&nbsp;M节点故障后,需要人工(晋升从节点,修改节点配置)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全量复制:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S发送pssyn请求数据同步,M响应fullresyn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;M发送RDB数据,缓冲新写入<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S清空旧数据,加载RBD(全量复制),应用缓冲的新写入<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增量复制:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S发送pssyn请求数据同步,M响应continue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;M发送部分数据<br>&nbsp;&nbsp;哨兵模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用哨兵检测每个节点运行状态,哨兵之间互相检查运行状态<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;哨兵检测到M下线后,所有哨兵也检测,验证是否客观下线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主节点故障后,自动晋升,并通知其他节点修改配置<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[缺点]节点储存的数据相同这一本质没改变,不好扩容<br>&nbsp;&nbsp;集群模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所有<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;简化了节点扩容和收缩的难度<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;节点自身维护槽的映射关系<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限制:<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;主从模式:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*:&nbsp;M节点故障后,需要人工(晋升从节点,修改节点配置)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全量复制:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S发送pssyn请求数据同步,M响应fullresyn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;M发送RDB数据,缓冲新写入<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S清空旧数据,加载RBD(全量复制),应用缓冲的新写入<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增量复制:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;S发送pssyn请求数据同步,M响应continue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;M发送部分数据<br>&nbsp;&nbsp;哨兵模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用哨兵检测每个节点运行状态,哨兵之间互相检查运行状态<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;哨兵检测到M下线后,所有哨兵也检测,验证是否客观下线<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主节点故障后,自动晋升,并通知其他节点修改配置<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;[缺点]节点储存的数据相同这一本质没改变,不好扩容<br>&nbsp;&nbsp;集群模式:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;key映射到14bit的桶,每个Node管理多个桶<br></p>
         
             <p class="question">07.yml&nbsp;Q:&nbsp;如何用Redis实现分布式锁<br></p>
         
@@ -63,7 +63,11 @@
         
             <p class="question">08.yml&nbsp;Q:&nbsp;Redis如何实现缓存一致?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;命中:&nbsp;直接读取缓存<br>&nbsp;&nbsp;未命中:&nbsp;读取数据库;自动写回缓存<br>&nbsp;&nbsp;更新:<br>&nbsp;&nbsp;&nbsp;&nbsp;更新Cache,更新DB:&nbsp;数据不一致(更新DB失败时)<br>&nbsp;&nbsp;&nbsp;&nbsp;[删除Cache,更新DB]:&nbsp;数据不一致(更新时因缓存被删旧数据被写回)&nbsp;&nbsp;#&nbsp;用延时双删<br>&nbsp;&nbsp;&nbsp;&nbsp;[更新DB,删除Cache]:&nbsp;小概率数据不一致(因缓存击穿,且更新DB先于写回而完成)<br>&nbsp;&nbsp;&nbsp;&nbsp;更新DB,更新Cache:&nbsp;更新需要计算,若写过读少则没更新的必要删除即可<br>&nbsp;&nbsp;延迟双删策略:&nbsp;成功修改数据库后,sleep一段时间,然后删除Redis,保证旧数据写回被删除<br>&nbsp;&nbsp;修改数据库失败:&nbsp;使用MQ,在失败后异步重试<br>&nbsp;&nbsp;读写分离架构:&nbsp;数据不一致(更新DB删除Cache后,在DB主从同步过程中发生了写回)&nbsp;&nbsp;#&nbsp;用延时双删</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;命中:&nbsp;直接读取缓存<br>&nbsp;&nbsp;未命中:&nbsp;读取数据库;自动写回缓存<br>&nbsp;&nbsp;更新:<br>&nbsp;&nbsp;&nbsp;&nbsp;更新Cache,更新DB:&nbsp;数据不一致(更新DB失败时)<br>&nbsp;&nbsp;&nbsp;&nbsp;删除Cache,更新DB:&nbsp;数据不一致(更新时因缓存被删旧数据被写回)&nbsp;&nbsp;#&nbsp;用延时双删<br>&nbsp;&nbsp;&nbsp;&nbsp;更新DB,删除Cache:&nbsp;小概率数据不一致(因缓存击穿,且更新DB先于写回而完成)<br>&nbsp;&nbsp;&nbsp;&nbsp;更新DB,更新Cache:&nbsp;更新需要计算,若写过读少则没更新的必要删除即可<br>&nbsp;&nbsp;延迟双删策略:&nbsp;成功修改数据库后,sleep一段时间,然后删除Redis,保证旧数据写回被删除<br>&nbsp;&nbsp;修改数据库失败:&nbsp;使用MQ,在失败后异步重试<br>&nbsp;&nbsp;读写分离架构:&nbsp;数据不一致(更新DB删除Cache后,在DB主从同步过程中发生了写回)&nbsp;&nbsp;#&nbsp;用延时双删</p>
+        
+            <p class="question">09.yml&nbsp;Q:&nbsp;Redis集群模式有哪些优缺点?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;优点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;简化了节点扩容和收缩的难度<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;节点自身维护槽的映射关系<br>&nbsp;&nbsp;缺点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;只支持同节点内的批量操作、事务操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;大键值对象必须放在同一节点内<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;集群内节点只能与一个DB对接,只能形成单层结构</p>
         
     </body>
     </html>
