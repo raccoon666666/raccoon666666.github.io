@@ -73,5 +73,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;主服务器:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;更新数据时,将数据变化情况写入BinLog<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BinLog分类:(记录数据变化/记录引起更新的语句)<br>&nbsp;&nbsp;从服务器:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;从服务器使用三个线程,一个远程读取BinLog,<br>&nbsp;&nbsp;&nbsp;&nbsp;一个将获取的数据写入RelayLog,<br>&nbsp;&nbsp;&nbsp;&nbsp;一个执行RelayLog以实现数据同步</p>
         
+            <p class="question">12.yml&nbsp;Q:&nbsp;如何优化数据库查询?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;建表:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用自增主键;①方便排序②避免B+树分裂<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用定长;①利于优化<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将不常用字段分表;①避免从磁盘读取不相关数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将经常连接的表物化;①避免重复连接<br>&nbsp;&nbsp;插入:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;临时关闭唯一性检查、外键检查<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;关闭事务自动提交<br>&nbsp;&nbsp;索引:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;左外连接时对右表建索引;①因为左表的行必取<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;select-group中的列建成组合索引<br>&nbsp;&nbsp;Select:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;select:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用索引覆盖;①避免回表查询<br>&nbsp;&nbsp;&nbsp;&nbsp;from:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;业务层连接&nbsp;&gt;&nbsp;表连接&nbsp;&gt;&nbsp;子查询<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;连接时小表驱动大表<br>&nbsp;&nbsp;&nbsp;&nbsp;where:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;先where筛选聚合键再group<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;分页优化(缓存,对称,索引覆盖)</p>
+        
     </body>
     </html>
