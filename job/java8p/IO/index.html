@@ -37,5 +37,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;内置序列化:<br>&nbsp;&nbsp;&nbsp;&nbsp;要求:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类实现Serializable接口(子类将自动实现该接口)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据类定义常量serialVersionUID表示当前的版本(避免反序列化冲突)<br>&nbsp;&nbsp;&nbsp;&nbsp;调用方法:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用ObjectInputStream.writeObject()序列化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用ObjectInputStream.readObject()反序列化<br>&nbsp;&nbsp;&nbsp;&nbsp;序列过程:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;反序列化时,若类实现了Serializable接口则用反射构造,否则用new&nbsp;XX()构造<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;所以子类实现了Serializable而父类没有时,将调用new&nbsp;Father();<br>&nbsp;&nbsp;其他序列化:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;JSON,GSON,Fastjson,Jackson<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Protobuf<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thrift<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Avro</p>
         
+            <p class="question">03.yml&nbsp;Q:&nbsp;NIO与BIO的区别是什么?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BIO&nbsp;面向流&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阻塞IO&nbsp;&nbsp;&nbsp;&nbsp;单向传输<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;NIO&nbsp;面向缓冲区&nbsp;&nbsp;非阻塞IO&nbsp;&nbsp;双向传输<br>&nbsp;&nbsp;NIO:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread-Selector-多个&lt;Channel,Buffer&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;HeapBuffer:磁盘-内核缓存-JVM缓存-程序<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;MappedBytedBuffer:磁盘-直接内存-程序</p>
+        
     </body>
     </html>
