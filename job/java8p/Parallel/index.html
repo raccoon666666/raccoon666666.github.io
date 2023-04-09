@@ -29,6 +29,10 @@
     </head>
     <body>
         
+            <p class="question">00.yml&nbsp;Q:&nbsp;乐观锁和悲观锁的区别与应用场景<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;乐观锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;volatile<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;基于CAS的原子变量<br>&nbsp;&nbsp;悲观锁:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock,synchronize<br>&nbsp;&nbsp;其他:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不可变类</p>
+        
             <p class="question">01.yml&nbsp;Q:&nbsp;线程的创建方式有哪些?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;继承:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;new&nbsp;MyThread()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;公用数据定义为static,&nbsp;私用数据定义为成员<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;run中使用[this]即可获得当前线程<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;占用了[父类]<br>&nbsp;&nbsp;Runnable:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;new&nbsp;Thread(Runnable)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;公用数据定义为成员(传入同一Runnable)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;无返回,无异常<br>&nbsp;&nbsp;FutureTask:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;new&nbsp;Thread(FutureTask(Callable))<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;有返回,有异常<br></p>
@@ -75,7 +79,7 @@
         
             <p class="question">12.yml&nbsp;Q:&nbsp;ThreadLocal<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;功能:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;针对某个固定的ThreadLocal对象(public&nbsp;static&nbsp;ThreadLocal&nbsp;session)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;相同的调用代码,根据当前线程的不同,从该ThreadLocal中拿出的值也不同<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal本身不存VALUE,只是一个标记<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread对象&nbsp;==&nbsp;1个ThreadLocalMap&lt;ThreadLocal,E&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal的值保存在Thread中,针对每个ThreadLocal保存一个值<br>&nbsp;&nbsp;Hash冲突:&nbsp;TheadLocal定义静态原子base,每次实例化计算base+Delta作为其HASH值<br>&nbsp;&nbsp;若引用:&nbsp;ThreadLocalMap数组中保存的Entry是弱引用,因为要避免ThreadLocal对象无法回收<br>&nbsp;&nbsp;应用场景:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;跨层传递数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程间数据隔离<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;事务操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库Connection管理<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Session会话管理</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;功能:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;针对某个固定的ThreadLocal对象(public&nbsp;static&nbsp;ThreadLocal&nbsp;session)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;相同的调用代码,根据当前线程的不同,从该ThreadLocal中拿出的值也不同<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;访问过程:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal本身不存VALUE,只是一个标记<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Thread对象&nbsp;==&nbsp;1个ThreadLocalMap&lt;ThreadLocal,E&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ThreadLocal的值保存在Thread中,针对每个ThreadLocal保存一个值<br>&nbsp;&nbsp;&nbsp;&nbsp;Hash冲突:&nbsp;TheadLocal定义静态原子base,每次实例化计算base+Delta作为其HASH值<br>&nbsp;&nbsp;&nbsp;&nbsp;弱引用:&nbsp;ThreadLocalMap数组中保存的Entry是弱引用,因为要避免ThreadLocal对象无法回收<br>&nbsp;&nbsp;应用场景:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;跨层传递数据<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程间数据隔离<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;事务操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;数据库Connection管理<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Session会话管理</p>
         
             <p class="question">13.yml&nbsp;Q:&nbsp;说说你对读写锁的理解?<br></p>
         
@@ -85,13 +89,33 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;线程池:&nbsp;Executor、ThreadPoolExecutor<br>&nbsp;&nbsp;原子更新:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用CAS在多线程下实现原子操作<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;原子基本类型、原子数组、原子引用、原子字段<br>&nbsp;&nbsp;锁和条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于阻塞的锁和用于唤醒的条件<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Lock、Condition<br>&nbsp;&nbsp;阻塞队列:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于生产者-消费者模型<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;BlockingQueue<br>&nbsp;&nbsp;并发容器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;实现了线程安全的集合类<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Concurrent、CopyOnWrite<br>&nbsp;&nbsp;同步器:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;协助同步<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Semaphore、FutureTask</p>
         
-            <p class="question">15.yml&nbsp;Q:&nbsp;说说你对线程池的理解?<br></p>
+            <p class="question">15.yml&nbsp;Q:&nbsp;有哪些方法可实现子线程划分任务?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;Java的线程是KLT,启动一个线程的成本高<br>&nbsp;&nbsp;-&nbsp;线程池在系统启动时创建一定数量线程,通过对线程复用,适合运行大量生存期短的线程<br>&nbsp;&nbsp;-&nbsp;只需将Runnable和Callable传入线程池,其自动分配线程去执行它<br>A:&nbsp;<br>&nbsp;&nbsp;优点:&nbsp;无需创建与销毁:减低资源消耗,提高响应,对系统中存在的线程进行可控的管理(监控,调优)<br>&nbsp;&nbsp;缺点:&nbsp;线程池太小容易OOM,太大频繁切换上下文<br>&nbsp;&nbsp;ThreadPoolExecute:<br>&nbsp;&nbsp;&nbsp;&nbsp;核心线程数:&nbsp;初次获取线程时,创建N个不会销毁的线程<br>&nbsp;&nbsp;&nbsp;&nbsp;最大线程数:&nbsp;当核心线程不够用时创建的临时线程,临时+核心&lt;=MAX<br>&nbsp;&nbsp;&nbsp;&nbsp;闲置时间:&nbsp;临时线程达到闲置时间上限时被销毁<br>&nbsp;&nbsp;&nbsp;&nbsp;阻塞队列:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SynchronousQueue:&nbsp;无队列<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LinkedBlockingQueue:&nbsp;[链表实现]默认无界(MAX_INT),可指定大小<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArrayBlockingQueue:&nbsp;[数组实现]默认有界<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DelayQueue:&nbsp;数组实现,默认无界,只能取过期元素<br>&nbsp;&nbsp;&nbsp;&nbsp;线程的工厂类:<br>&nbsp;&nbsp;&nbsp;&nbsp;拒绝策略:&nbsp;BQ满时如何处理被阻塞的线程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbortPolicy:&nbsp;[默认]拒绝,抛异常<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DiscardPolicy:&nbsp;拒绝,不异常<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DiscardOldestPolicy:&nbsp;丢弃队头<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CallerRunsPolicy:&nbsp;直接执行<br>&nbsp;&nbsp;Executors:<br>&nbsp;&nbsp;&nbsp;&nbsp;newSingleThreadExecutor:&nbsp;core=1,max=1,LBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newFixedThreadPool:&nbsp;core=?,max=?,LBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newCachedThreadPool:&nbsp;core=0,max=MAX,1min,无BQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newScheduledThreadPool:&nbsp;core=?,max=MAX,0min,DBQ<br>&nbsp;&nbsp;方法:&nbsp;execute,submit<br>&nbsp;&nbsp;状态:&nbsp;isShutdown<br>&nbsp;&nbsp;运行流程:<br>&nbsp;&nbsp;OOM情况:&nbsp;无界BQ,max=MAX,<br><br>&nbsp;&nbsp;#&nbsp;核心,临时,BQ,MAX&nbsp;的流程如何?&nbsp;超过MAX时放入BQ?&nbsp;超过核心时放入BQ?<br>&nbsp;&nbsp;#&nbsp;BQ是对MAX的补充?达到MAX后不能创建临时线程时放在BQ备用<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;join:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主线程中t.join()等待<br>&nbsp;&nbsp;ThreadPool:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用execute添加子任务<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主线程自旋判断isTerminated()<br>&nbsp;&nbsp;CountDownLatch:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cdl&nbsp;=&nbsp;new&nbsp;CountDownLatch(线程数)表示计划完成数<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子线程执行完毕后调用cdl.countDown()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;主线程调用cdl.await()阻塞自己<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cdl减少到0时唤醒主线程<br>&nbsp;&nbsp;CyclicBarrier:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cb&nbsp;=&nbsp;new&nbsp;CyclicBarrier(线程数,回调)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;子线程执行完毕后调用cb.await()阻塞自己<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cb执行减少到0时唤醒所有子线程,并调用回调方法(主线程全程没被阻塞)</p>
         
-            <p class="question">16.yml&nbsp;Q:&nbsp;说说CountDownLatch的原理与作用?<br></p>
+            <p class="question">16.yml&nbsp;Q:&nbsp;线程池有哪些优缺点?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;原理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;new&nbsp;CountDownLatch(线程数),表示要等待的线程数量<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;等待方线程调用obj.await()等待其他线程完成<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;被等待方线程执行完毕后调用obj.countDown()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;减少到0时,await被唤醒<br>&nbsp;&nbsp;作用:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;类似于thread.join()<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;用于任务的并行拆分</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;优点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Java的线程是KLT,创建/销毁线程的成本高<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程池可加速响应,降低资源消耗<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程池可对线程管理、监控、调优<br>&nbsp;&nbsp;缺点:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程池太小容易OOM<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;某些设置可能引起OOM(设置max=MAX;设置BQ无界)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;线程池太大容易频繁切换上下文</p>
+        
+            <p class="question">17.yml&nbsp;Q:&nbsp;线程池的构造方法有哪些参数?线程数如何设置?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;参数:<br>&nbsp;&nbsp;&nbsp;&nbsp;核心线程数:&nbsp;不会销毁的线程数<br>&nbsp;&nbsp;&nbsp;&nbsp;最大线程数:&nbsp;core线程与tmp线程总和的最大值<br>&nbsp;&nbsp;&nbsp;&nbsp;空闲时长上限:&nbsp;tmp线程空闲超时后自动销毁<br>&nbsp;&nbsp;&nbsp;&nbsp;线程池工厂:&nbsp;根据Runnable产生Thread的策略(默认为前台;优先级5)<br>&nbsp;&nbsp;&nbsp;&nbsp;拒绝策略:&nbsp;当BQ满后拒绝新加入任务的策略<br>&nbsp;&nbsp;线程数:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;CPU密集型&nbsp;&nbsp;cpu_core+1&nbsp;&nbsp;&nbsp;尽量减少线程数,以避免过多线程切换<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;IO密集型&nbsp;&nbsp;&nbsp;2*core_cpu&nbsp;&nbsp;&nbsp;尽量使用多线程,避免主线程阻塞</p>
+        
+            <p class="question">18.yml&nbsp;Q:&nbsp;线程池有哪些状态,如何切换状态?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解释&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;转换<br>&nbsp;&nbsp;-&nbsp;RUNNING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接受新任务,执行任务&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;-&nbsp;SHUTDOWN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不接受新任务,执行任务&nbsp;&nbsp;shutdown()<br>&nbsp;&nbsp;-&nbsp;STOP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不接受新任务,终止任务&nbsp;&nbsp;shutdownNow()&nbsp;<br>&nbsp;&nbsp;-&nbsp;TIDYING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;短暂周期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;-&nbsp;TERMINATED&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示任务全执行完毕&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminated()&nbsp;<br></p>
+        
+            <p class="question">19.yml&nbsp;Q:&nbsp;什么是线程池的拒绝策略?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;解释:&nbsp;当线程池BQ满时,将后续到达的任务拒绝<br>&nbsp;&nbsp;类型:<br>&nbsp;&nbsp;&nbsp;&nbsp;DiscardPolicy:&nbsp;直接拒绝,不抛异常<br>&nbsp;&nbsp;&nbsp;&nbsp;AbortPolicy:&nbsp;直接拒绝,抛异常<br>&nbsp;&nbsp;&nbsp;&nbsp;DiscardOldestPolicy:&nbsp;拒绝BQ队头,加入BQ队列<br>&nbsp;&nbsp;&nbsp;&nbsp;CallerRunsPolicy:&nbsp;主线程调用任务的run()</p>
+        
+            <p class="question">20.yml&nbsp;Q:&nbsp;线程池的阻塞队列有哪些?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;SynchronousQueue:&nbsp;大小为0的队列<br>&nbsp;&nbsp;LinkedBlockingQueue:&nbsp;[链表实现]默认无界,可指定有界<br>&nbsp;&nbsp;ArrayBlockingQueue:&nbsp;[数组实现]默认有界<br>&nbsp;&nbsp;DelayQueue:&nbsp;[数组实现]默认无界,只能取过期元素</p>
+        
+            <p class="question">21.yml&nbsp;Q:&nbsp;Executes有哪些线程池?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;newCachedThreadPool:&nbsp;core=0,max=MAX,1min,无BQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newFixedThreadPool:&nbsp;core=max=?,LBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newSingleThreadExecutor:&nbsp;core=1,max=1,LBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newScheduledThreadPool:&nbsp;core=?,max=MAX,0min,DBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newSingleThreadScheduledExecutor:&nbsp;core=1,max=MAX,10ms,DBQ<br>&nbsp;&nbsp;&nbsp;&nbsp;newWorkStealingPool:&nbsp;core=0,min=1,max=MAX,多个BQ</p>
         
     </body>
     </html>
