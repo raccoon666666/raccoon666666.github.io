@@ -51,7 +51,7 @@
         
             <p class="question">07.yml&nbsp;Q:&nbsp;在堆上分配一个对象的过程?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收集器<br>&nbsp;&nbsp;-&nbsp;指针碰撞&nbsp;&nbsp;已使用内存与&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用CAS保证并发安全&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serial,ParNew(基于压缩整理)<br>&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空闲内存用指针分隔&nbsp;&nbsp;&nbsp;&nbsp;使用JMM,不够时再同步分配<br>&nbsp;&nbsp;-&nbsp;空闲列表&nbsp;&nbsp;记录所有空闲内存块&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMS(swap清除算法)&nbsp;</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;指针碰撞:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;将内存划分为已使用和未使用两部分,使用一个指针控制分配<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;多并发情况下使用(1)CAS(2)JMM保证正确分配<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;基于压缩整理的收集器(Serial,ParNew)使用指针碰撞<br>&nbsp;&nbsp;空闲列表:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;零散地使用内存,使用列表记录每个空闲区的范围<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;基于swap清除算法的收集器(CMS)使用空闲列表</p>
         
             <p class="question">08.yml&nbsp;Q:&nbsp;一个对象的Markword的结构?<br></p>
         
@@ -64,6 +64,10 @@
             <p class="question">10.yml&nbsp;Q:&nbsp;如何回收垃圾?<br></p>
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;标记-清除:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;标记垃圾或非垃圾,然后清除垃圾<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;缺点是:标记和清除耗时效率低;&nbsp;产生大量内碎片<br>&nbsp;&nbsp;标记-复制:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;内存只用一半,复制存活对象然后清空此半<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;优点是:没有内碎片<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;缺点是:老年代要复制的太多;&nbsp;内存浪费太多<br>&nbsp;&nbsp;标记-整理:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;标记垃圾或非垃圾,然后内存紧缩,最后清除垃圾<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;优点是:适用于老年代<br>&nbsp;&nbsp;分代收集:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;新生代划分为8+1+1,复制到1(不够则老年代补),清除8+1<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;划分新生代老生代,新生代多次GC后仍存活的对象移动到老生代<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;新生代维护[记忆集],记录老生代划分区域中是否存在跨代引用<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;GC时用可达分析并根据[记忆集]分析老生代中对新生代的可达标记垃圾<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;优点是:没有内碎片;&nbsp;内存浪费少<br></p>
+        
+            <p class="question">11.yml&nbsp;Q:&nbsp;类加载器有哪些?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;启动类bootstrap:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;JH/lib/tr.jar;tools.jar<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;无法直接使用<br>&nbsp;&nbsp;扩展类extension:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;JH/lib/ext<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;可直接使用<br>&nbsp;&nbsp;程序类application:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;classpath<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;可直接使用<br>&nbsp;&nbsp;双亲委派:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;组合关系:boot&lt;-ext&lt;-app&lt;-自定义<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;先尝试委托父CL,若失败则自己加载<br>&nbsp;&nbsp;好处:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;类&nbsp;=&nbsp;&lt;CL,Class&gt;,自定义了优先级,保证关键类的相同<br></p>
         
     </body>
     </html>
