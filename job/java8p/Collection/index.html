@@ -45,5 +45,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;ArrayList:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;初始容量[0]-&gt;[10],元素达[100%]时扩容,扩容增加[50%]<br>&nbsp;&nbsp;HashMap:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;桶初始容量为[16],元素达[75%]时扩容,扩容增加[100%]<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;扩容后所有元素重新计算hash(判断新增bit是否为1)(优先用String当键的意义在此)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;对于需要移动的元素,JDK7用头插法,JDK8用尾插法<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;链表增长到[8]时转红黑树,红黑树减少到[6]时转链表<br>&nbsp;&nbsp;</p>
         
+            <p class="question">05.yml&nbsp;Q:&nbsp;HashMap与Hashtable的区别<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;命名:&nbsp;Hashtable不满足驼峰命名<br>&nbsp;&nbsp;继承:&nbsp;HashMap&lt;AbsHashMap,Map&gt;,Hashtable&lt;Dictionary,Map&gt;<br>&nbsp;&nbsp;空值:&nbsp;HashMap允许KV为空<br>&nbsp;&nbsp;并发:&nbsp;HashMap线程不安全,Hashtable线程安全<br>&nbsp;&nbsp;遍历:&nbsp;Hashtable除了用iterator外还使用Enumeration<br>&nbsp;&nbsp;哈希:&nbsp;HashMap使用位运算,Hashtable使用除留取余法<br>&nbsp;&nbsp;扩容:&nbsp;HashMap容量翻倍保持2的幂,Hashtable乘2加1保持质数<br>&nbsp;&nbsp;</p>
+        
     </body>
     </html>
