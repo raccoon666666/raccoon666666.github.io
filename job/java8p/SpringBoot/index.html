@@ -31,15 +31,19 @@
         
             <p class="question">00.yml&nbsp;Q:&nbsp;SpringBoot的独特之处在哪?<br></p>
         
-            <p class="answer">A:&nbsp;<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;约定大于配置,只需少量的起步配置<br>&nbsp;&nbsp;-&nbsp;自动化第三方配置生成Bean<br>&nbsp;&nbsp;-&nbsp;内置Servlet容器,可独立运行<br>&nbsp;&nbsp;-&nbsp;提供起步依赖,同时在父项目中定义了默认版本<br></p>
         
             <p class="question">01.yml&nbsp;Q:&nbsp;有哪些配置文件?执行顺序如何?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;基本顺序:&nbsp;yaml&nbsp;&lt;&nbsp;yml&nbsp;&lt;&nbsp;properties<br>&nbsp;&nbsp;激活配置:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yaml&nbsp;&lt;&nbsp;yaml-dev&nbsp;&lt;&nbsp;yml&nbsp;&lt;&nbsp;yml-dev&nbsp;&lt;&nbsp;prop&nbsp;&lt;&nbsp;prop-dev<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yml不支持多文件的激活,只能写在同一个文件里<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当yaml和yml定义了相同激活时,yml优先<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yml中可激活prop-dev配置<br>&nbsp;&nbsp;环境变量:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当存在prop时,即使env中激活yml也不会生效<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;VM环境&nbsp;&lt;&nbsp;命令行参数</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;优先级:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yaml&nbsp;&lt;&nbsp;yaml-dev&nbsp;&lt;&nbsp;yml&nbsp;&lt;&nbsp;yml-dev&nbsp;&lt;&nbsp;prop&nbsp;&lt;&nbsp;prop-dev<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yml不支持多文件的激活,只能写在同一个文件里<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当yaml和yml定义了相同激活时,yml优先<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;yml中可激活prop-dev配置<br>&nbsp;&nbsp;环境变量:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当存在prop时,即使env中激活yml也不会生效<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;VM环境&nbsp;&lt;&nbsp;命令行参数</p>
         
             <p class="question">02.yml&nbsp;Q:&nbsp;SpringBoot的内置容器有哪些?<br></p>
         
-            <p class="answer">A:&nbsp;|<br>&nbsp;&nbsp;</p>
+            <p class="answer">A:&nbsp;|<br>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;容器&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;特点&nbsp;&nbsp;&nbsp;|&nbsp;用途&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;|&nbsp;:------:&nbsp;|&nbsp;:------:&nbsp;|&nbsp;---------------------&nbsp;|<br>&nbsp;&nbsp;|&nbsp;&nbsp;Jetty&nbsp;&nbsp;&nbsp;|&nbsp;使用NIO&nbsp;&nbsp;|&nbsp;容易嵌入,&nbsp;长连接,&nbsp;轻量&nbsp;|<br>&nbsp;&nbsp;|&nbsp;&nbsp;Tomcat&nbsp;&nbsp;|&nbsp;&nbsp;功能全&nbsp;&nbsp;|&nbsp;功能多,&nbsp;兼容好&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>&nbsp;&nbsp;|&nbsp;Undertow&nbsp;|&nbsp;轻量灵活&nbsp;|&nbsp;高并发,&nbsp;安全性好&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+        
+            <p class="question">03.yml&nbsp;Q:&nbsp;SpringBoot有哪些重要的注解?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;@SpringBootApplication:<br>&nbsp;&nbsp;&nbsp;&nbsp;@SpringBootConfiguration:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;@EnableAutoConfiguration:&nbsp;对依赖Jar包的Bean作自动配置<br>&nbsp;&nbsp;&nbsp;&nbsp;@ComponentScan:&nbsp;<br></p>
         
     </body>
     </html>
