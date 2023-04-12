@@ -1,0 +1,37 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <title>Document</title>
+        <style>
+        .question {
+        border: 5px cornflowerblue solid;
+        border-radius: 15px;
+        padding: 10px;
+        font-size: 24px;
+        color: cornflowerblue;
+        text-align: center;
+    }</style>
+        <style>
+        .answer {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px orange solid;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        color: black;
+    }</style>
+    </head>
+    <body>
+        
+            <p class="question">01.yml&nbsp;Q:&nbsp;参数传递的$和#有什么区别?<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;参数#{}会使用预编译机制,将参数自动添加单引号<br>&nbsp;&nbsp;-&nbsp;参数${}直接将值拼接进SQL<br>&nbsp;&nbsp;-&nbsp;当&nbsp;表名/列名&nbsp;使用动态参数时,只能用${},因为要避免自动引号的影响<br></p>
+        
+    </body>
+    </html>
