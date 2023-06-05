@@ -45,5 +45,9 @@
         
             <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;@SpringBootApplication:<br>&nbsp;&nbsp;&nbsp;&nbsp;@SpringBootConfiguration:&nbsp;使用注解配置Bean<br>&nbsp;&nbsp;&nbsp;&nbsp;@EnableAutoConfiguration:&nbsp;对依赖Jar包的Bean作自动配置<br>&nbsp;&nbsp;&nbsp;&nbsp;@ComponentScan:&nbsp;设置Bean的包路径<br></p>
         
+            <p class="question">04.yml&nbsp;Q:&nbsp;Spring的事务管理机制实现方法有什么优劣<br></p>
+        
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;编程式事务:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(优)粒度小,可用在代码块内<br>&nbsp;&nbsp;声明式事务:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(优)代码侵入性低,业务与事务解耦<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;粒度大,只能用在public方法<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;方法内访问其他外设,导致事务阻塞,数据库连接池溢出<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;方法内访问其他外设的操作无法自动回滚</p>
+        
     </body>
     </html>
