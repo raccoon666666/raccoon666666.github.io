@@ -31,7 +31,7 @@
         
             <p class="question">01.yml&nbsp;Q:&nbsp;参数传递的$和#有什么区别?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;-&nbsp;参数#{}会使用预编译机制,将参数自动添加单引号<br>&nbsp;&nbsp;-&nbsp;参数${}直接将值拼接进SQL<br>&nbsp;&nbsp;-&nbsp;当&nbsp;表名/列名&nbsp;使用动态参数时,只能用${},因为要避免自动引号的影响<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;井号#{}:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;视为OGNL表达式,可使用表达式语法<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;会使用预编译机制,&nbsp;将参数自动添加单引号<br>&nbsp;&nbsp;美元${}:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;不视为OGNL,而是视为静态串,直接将值拼接进SQL<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;当&nbsp;表名/列名&nbsp;使用动态参数时,只能用${},&nbsp;因为要避免自动引号的影响<br></p>
         
     </body>
     </html>
