@@ -35,7 +35,7 @@
         
             <p class="question">02.yml&nbsp;Q:&nbsp;单例模式的4种实现方法的优劣<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;饿汉式加载:&nbsp;|<br>&nbsp;&nbsp;&nbsp;&nbsp;实现简单,线程安全<br>&nbsp;&nbsp;&nbsp;&nbsp;单例需要的资源较多时,影响系统启动时间<br>&nbsp;&nbsp;懒汉式加载-静态同步:&nbsp;每次都要加锁,性能差<br>&nbsp;&nbsp;懒汉式加载-块同步:&nbsp;每次都要判断<br>&nbsp;&nbsp;懒汉式加载-静态内部类:&nbsp;最简单的懒加载<br></p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;饿汉式加载:&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;优劣:&nbsp;实现简单,影响系统启动时间<br>&nbsp;&nbsp;&nbsp;&nbsp;分类:&nbsp;[&nbsp;static变量,&nbsp;内部枚举&nbsp;]<br>&nbsp;&nbsp;懒汉式加载:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;方法体同步(每次调用必定加锁,性能差)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;代码块同步(效率高一点)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;静态内部类(利用ClassLoader实现的线程安全)<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;CAS同步(低并发时效率高)<br></p>
         
             <p class="question">03.yml&nbsp;Q:&nbsp;工厂模式有哪些实现?有哪些优缺点?<br></p>
         

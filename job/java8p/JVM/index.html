@@ -31,7 +31,7 @@
         
             <p class="question">00.yml&nbsp;Q:&nbsp;内存泄露发生情况?如何避免?<br></p>
         
-            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;本质:&nbsp;长生命周期对象持有短生命周期对象<br>&nbsp;&nbsp;分类:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;常发性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;偶发性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一次性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐式内存泄漏<br>&nbsp;&nbsp;避免:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;尽早释放无用对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免在循环内创建对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;使用StringBuild连接字符串<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免过多使用static变量</p>
+            <p class="answer">A:&nbsp;<br>&nbsp;&nbsp;本质:&nbsp;长生命周期对象持有短生命周期对象<br>&nbsp;&nbsp;分类:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;常发性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;偶发性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;一次性内存泄漏<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;隐式内存泄漏<br>&nbsp;&nbsp;注意:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;尽早释放无用对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免在循环内创建对象<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;改用StringBuild连接字符串<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;避免过多使用static变量</p>
         
             <p class="question">01.yml&nbsp;Q:&nbsp;内存溢出的发生情况?如何避免?<br></p>
         
